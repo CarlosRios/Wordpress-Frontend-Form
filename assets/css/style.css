@@ -1,0 +1,179 @@
+/* General Styles */
+.ftp-clearfix{
+	clear:both;
+}
+.ftp-list{
+	display:block;
+	margin-bottom: 1em;
+}
+li.ftp-list-item{
+	position: relative;
+	display: block;
+	cursor: move;
+	border-radius: 2px;
+	margin-bottom: 0;
+	transition: background 0.2s ease-in-out;
+	-webkit-transition: background 0.2s ease-in-out;
+	-moz-transition: background 0.2s ease-in-out;
+}
+li.ftp-list-item:hover{
+	background: #FFF;
+	box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+	-webkit-box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+	-moz-box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+li.ftp-list-item h4{
+	margin: 0 !important;
+	line-height: 30px;
+}
+li.ftp-list-item h4 span.ftp-header-field-type{
+	font-weight: 400;
+}
+.ftp-field-placeholder{
+	background: #EAEAEA !important;
+}
+.ftp-field-wrapper, .ftp-header{
+	padding: 10px 20px;
+}
+.ftp-field-wrapper{
+	background: #F2FCFF;
+	border-top: 1px solid #dadada;
+	display:none;
+}
+.ftp-wrapper-active{
+	display: block;
+}
+.ftp-remove-field-button{
+	border-radius: 0 3px 3px 0 !important;
+	-webkit-border-radius: 0 3px 3px 0 !important;
+	-moz-border-radius: 0 3px 3px 0 !important; 
+}
+.ftp-edit-field-button{
+	border-radius: 3px 0 0 3px !important;
+	-webkit-border-radius: 3px 0 0 3px !important;
+	-moz-border-radius: 3px 0 0 3px !important; 
+}
+.ftp-button > .dashicons{
+	margin-top: 4px;
+}
+.ftp-sidebar{
+	width:230px;
+}
+.ftp-label{
+	background: #f3f3f3;
+	border-left: 1px solid #E1E1E1;
+}
+
+/* Field Container */
+#ftp-field-list > li.ftp-list-item{
+	margin-bottom: 1em;
+}
+.ftp-field-buttons-container{
+	width:100px;
+	float:right;
+	text-align: right;
+}
+
+/* Loader */
+.ftp-loading{
+	display: none;
+	visibility: 0;
+	position: absolute;
+	z-index: 9999;
+	top:0;
+	bottom:0;
+	left:0;
+	right:0;
+	background-color: rgba(255,255,255, 0.6);
+	transition: background 0.2s ease-in-out;
+	-webkit-transition: background 0.2s ease-in-out;
+	-moz-transition: background 0.2s ease-in-out;
+}
+.ftp-loading-active{
+	display: block !important;
+	visibility: 1 !important;
+}
+
+/* Field Boxes*/
+.ftp-field{
+	background: #fff;
+	z-index: 999;
+}
+.ftp-field-attr-label{
+	width: 35%;
+}
+#formtopost .inside{
+	margin:0;
+	padding:0;
+}
+#formtopost table td.ftp-padding-20{
+	padding:20px;
+}
+
+/* Sidebar Form */
+#ftp-form h2{
+	margin: 0 0 20px !important;
+	padding:0;
+}
+#ftp-form h2 > .dashicons{
+	line-height: 30px;
+}
+.ftp-form-settings{
+	background: #fafafa;
+	border: 1px dashed #ddd;
+	padding:20px 20px 30px;
+	margin-bottom:20px;
+}
+.ftp-form-settings label{
+	display:block;
+	margin: 0 0 7px;
+}
+.ftp-form-settings input, .ftp-form-settings select, .ftp-form-settings textarea{
+	margin: 0 0 7px;
+}
+
+/* Rows */
+#ftp-row-list > li{
+	padding: 10px;
+}
+li.ftp-list-item div > ul.tiles > li{
+	margin-bottom: 0 !important;
+}
+.ftp-row-box{
+	min-height: 50px;
+	border: 1px dashed #ccc;
+	background: #eaeaea;
+}
+.ftp-field-container{
+	background: #FFF;
+}
+.ftp-list-item:hover .ftp-remove-row-button{
+	display: block;
+	visibility: 1;
+}
+.ftp-remove-row-button{
+	display: none;
+	visibility: 0;
+	transition: background 0.2s ease-in-out;
+	-webkit-transition: background 0.2s ease-in-out;
+	-moz-transition: background 0.2s ease-in-out;
+	position: absolute;
+	right:-18px;
+	top:-18px;
+	background: #e14d43;
+	border: 1px solid #d02a21;
+	box-shadow: inset 0 1px 0 #e8756f,0 2px 3px rgba(0,0,0,.3);
+	-webkit-box-shadow: inset 0 1px 0 #e8756f,0 2px 3px rgba(0,0,0,.3);
+	-moz-box-shadow: inset 0 1px 0 #e8756f,0 2px 3px rgba(0,0,0,.3);
+	border-radius: 20px;
+	-webkit-border-radius: 20px;
+	-moz-border-radius: 20px;
+	color: #FFF !important;
+	padding:4px;
+	z-index:1;
+}
+
+/* Droppable */
+.ftp-drop-hover{
+	background: #fff;
+}
