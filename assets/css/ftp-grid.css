@@ -30,7 +30,7 @@
 /*.container {
 	padding: 0 $gutter-in-px;
 }*/
-.row { width: 100%; max-width: 1040px; min-width: 320px; margin: 0 auto;}
+.row { width: 100%; max-width: 1100px; min-width: 320px; margin: 0 auto;}
 .row .row { min-width: 0; padding-left: 0; padding-right: 0; }
 
 /* To fix the grid into a different size, set max-width to your desired width */

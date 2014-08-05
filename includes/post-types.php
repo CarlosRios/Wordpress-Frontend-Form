@@ -4,8 +4,8 @@ add_action('init', function(){
 		'labels'				=> [
 			'name'					=> __('Forms', 'formtopost'),
 			'singular_name' 		=> __('Form', 'formtopost'),
-			'add_new'				=> __('Add New Form', 'formtopost'),
-			'add_new_item'			=> __('Add New Form', 'formtopost'),
+			'add_new'				=> __('Create A Form', 'formtopost'),
+			'add_new_item'			=> __('Create A Form', 'formtopost'),
 			'edit_item'				=> __('Edit Form', 'formtopost'),
 			'new_item'				=> __('New Form', 'formtopost'),
 			'view_item'				=> __('View Form', 'formtopost'),

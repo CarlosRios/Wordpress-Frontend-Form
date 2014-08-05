@@ -12,15 +12,14 @@ li.ftp-list-item{
 	cursor: move;
 	border-radius: 2px;
 	margin-bottom: 0;
+	border: 1px solid #fff;
 	transition: background 0.2s ease-in-out;
 	-webkit-transition: background 0.2s ease-in-out;
 	-moz-transition: background 0.2s ease-in-out;
 }
 li.ftp-list-item:hover{
+	border: 1px solid #ddd;
 	background: #FFF;
-	box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-	-webkit-box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-	-moz-box-shadow: 0 1px 3px rgba(0,0,0,0.1);
 }
 li.ftp-list-item h4{
 	margin: 0 !important;
@@ -30,7 +29,7 @@ li.ftp-list-item h4 span.ftp-header-field-type{
 	font-weight: 400;
 }
 .ftp-field-placeholder{
-	background: #EAEAEA !important;
+	background: #f0f0f0 !important;
 }
 .ftp-field-wrapper, .ftp-header{
 	padding: 10px 20px;
@@ -60,13 +59,13 @@ li.ftp-list-item h4 span.ftp-header-field-type{
 	width:230px;
 }
 .ftp-label{
-	background: #f3f3f3;
 	border-left: 1px solid #E1E1E1;
 }
 
 /* Field Container */
 #ftp-field-list > li.ftp-list-item{
 	margin-bottom: 1em;
+	border: 1px dashed #ccc;
 }
 .ftp-field-buttons-container{
 	width:100px;
@@ -175,5 +174,5 @@ li.ftp-list-item div > ul.tiles > li{
 
 /* Droppable */
 .ftp-drop-hover{
-	background: #fff;
+	background: #EAF6FD;
 }

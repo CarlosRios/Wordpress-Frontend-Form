@@ -21,7 +21,9 @@ class Form {
 		$post_types = get_post_types('', 'objects');
 		$types = [];
 		foreach($post_types as $type){
-			$types[$type->name] = $type->labels->name;
+			if( $type->name != 'formtopost'){ // Don't want to be creating new forms.
+				$types[$type->name] = $type->labels->name;
+			}
 		}
 
 		// Set default options to prevent errors
