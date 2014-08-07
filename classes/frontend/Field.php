@@ -17,4 +17,13 @@ class Field{
 		return $label;
 	}
 
+	/**
+	* Returns data that has been posted
+	* @param string $field_id
+	*/
+	protected static function postedData($field_id)
+	{
+		return isset($_POST[$field_id]) ? $_POST[$field_id] : '';
+	}
+
 }

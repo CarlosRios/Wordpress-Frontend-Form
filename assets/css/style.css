@@ -125,10 +125,15 @@ li.ftp-list-item h4 span.ftp-header-field-type{
 }
 .ftp-form-settings label{
 	display:block;
-	margin: 0 0 7px;
+	padding: 6px 0;
+	font-weight: 800;
 }
 .ftp-form-settings input, .ftp-form-settings select, .ftp-form-settings textarea{
 	margin: 0 0 7px;
+}
+#ftp-form .ftp-input-wrapper{
+	border-bottom: 1px solid #ddd;
+	margin-bottom: 5px;
 }
 
 /* Rows */
@@ -175,4 +180,16 @@ li.ftp-list-item div > ul.tiles > li{
 /* Droppable */
 .ftp-drop-hover{
 	background: #EAF6FD;
+}
+
+/* Modal */
+.ftp-field-modal{
+	padding: 50px;
+}
+.ftp-field-modal > .ftp-input-wrapper{
+	margin-bottom: 10px;
+}
+.ftp-field-modal > .ftp-input-wrapper > label{
+	display: block;
+	margin-bottom: 5px;
 }

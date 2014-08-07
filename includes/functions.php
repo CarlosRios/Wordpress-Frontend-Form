@@ -3,7 +3,8 @@
 * Functions
 */
 function get_ftp_form($atts){
-	return Form::getForm($atts['id']);
+	$form = new Form($atts['id']);
+	return $form->show();
 }
 add_shortcode('ftp_form', 'get_ftp_form');
 

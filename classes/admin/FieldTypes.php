@@ -7,7 +7,9 @@ class FieldTypes extends Field{
 		'email'			=> 'Email',
 		'phone'			=> 'Phone',
 		'textarea'		=> 'Textarea',
-		'select'		=> 'Select'
+		'select'		=> 'Select',
+		'post_title'	=> 'Post Title',
+		'post_content'	=> 'Post Content'
 	];
 
 	public static function getTypeItems()
@@ -35,6 +37,7 @@ class FieldTypes extends Field{
 	public static function select($field, $row)
 	{
 		$html = self::standardSettings($field, $row);
+		$html .= Input::text($field['id'] . '_options', 'ftp_fields['.$row.']['.$field['id'].'][options]', 'Field Options', $field['options'], '', 'Enter a comma separated list');
 		return $html;
 	}
 
@@ -53,6 +56,18 @@ class FieldTypes extends Field{
 	public static function phone($field, $row)
 	{
 		$html = self::standardSettings($field, $row);
+		return $html;
+	}
+
+	public static function post_title($field, $row)
+	{
+		$html = self::postContentSettings($field, $row);
+		return $html;
+	}
+
+	public static function post_content($field, $row)
+	{
+		$html = self::postContentSettings($field, $row);
 		return $html;
 	}
 

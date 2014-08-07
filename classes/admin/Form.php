@@ -26,6 +26,9 @@ class Form {
 			}
 		}
 
+		// Gather status' in array
+		$stati = get_post_stati();
+
 		// Set default options to prevent errors
 		if( ! $options = get_post_meta($postid, 'ftp_options', true) )
 			$options = ['button' => ['class' => '', 'text' => 'Submit'], 'post_type' => 'posts'];
@@ -40,6 +43,7 @@ class Form {
 				$html .= Input::text('ftp-form-options-button-class', 'ftp_options[button][class]', 'Button Class', $options['button']['class']);
 				$html .= Input::text('ftp-form-options-button-text', 'ftp_options[button][text]', 'Button Text', self::valueOrDefault($options['button']['text'], 'Submit') );
 				$html .= Input::checkbox('ftp-form-options-labels', 'ftp_options[labels]', 'Show Labels?', 1, $options['labels']);
+				$html .= Input::select('ftp-form-options-post-status', 'ftp_options[post_status]', 'New Post Status', $options['post_status'], $stati, 'The status the new post will receive.' );
 			$html .= '</div>';
 
 			/**
@@ -48,7 +52,7 @@ class Form {
 			$html .= '<h2><div class="dashicons dashicons-plus-alt"></div> Add A New Row</h2>';
 			$html .= '<div class="ftp-form-settings">';
 				$html .= Input::select('ftp-new-row-columns', '', 'Number Of Columns', 3, [1 => 1, 2 => 2, 3 => 3, 4 => 4, 5 => 5]);
-				$html .= '<br><button id="ftp-add-row-button" class="button button-primary button-large">Add Row</button>';
+				$html .= '<button id="ftp-add-row-button" class="button button-primary button-large">Add Row</button>';
 			$html .= '</div>';
 		$html .= '</div>';
 		return $html;

@@ -46,24 +46,10 @@ class Field {
 	public static function fieldModal($field, $row)
 	{
 		$modal = '<div id="'.$field['id'].'_modal" style="display:none;">';
-			$modal .= '<div id="media-items"><div class="media-item media-blank">';
-				$modal .= '<table class="describe"><tbody>';
-					$modal .= call_user_func([ 'FieldTypes', $field['type'] ], $field, $row);
-				$modal .= '</tbody></table>';
-			$modal .= '</div></div>';
+			$modal .= '<div class="ftp-field-modal">'.call_user_func([ 'FieldTypes', $field['type'] ], $field, $row).'</div>';
 		$modal .= '</div>';
 		return $modal;
 	}
-
-	/**
-	* Returns the label for modals
-	* @param string $label
-	* @param string $field_id
-	*/
-	protected static function modalLabel($label, $field_id)
-	{
-		return '<th><label scope="row" class="label" for="'.$field_id.'">'.$label.'</label></th>';
-	}	
 
 	/**
 	* Standard settings that can be used in every field
@@ -76,17 +62,28 @@ class Field {
 		$html .= Input::hidden('ftp_fields['.$row.']['.$field['id'].'][type]', $field['type']);
 		$html .= Input::hidden('ftp_fields['.$row.']['.$field['id'].'][id]', $field['id']);
 
-		// Field Label
-		$html .= '<tr>';
-			$html .= self::modalLabel('Field Label', $field['id'] . '_label');
-			$html .='<td class="field">'.Input::text($field['id'] . '_label', 'ftp_fields['.$row.']['.$field['id'].'][label]', false, $field['label']).'</td>';
-		$html .= '</tr>';
-		
-		// Meta Key
-		$html .= '<tr>';
-			$html .= self::modalLabel('Meta Key', $field['id'] . '_meta_key');
-			$html .= '<td class="field">'.Input::text($field['id'] . '_meta_key', 'ftp_fields['.$row.']['.$field['id'].'][meta_key]', false, $field['meta_key']).'</td>';
-		$html .= '</tr>';
+		$html .= '<h3>Field Settings</h3>';
+		$html .= Input::checkbox($field['id'] . '_required', 'ftp_fields['.$row.']['.$field['id'].'][required]', 'Required Field', true, $field['required'], 'Is this field requried?');
+		$html .= Input::text($field['id'] . '_label', 'ftp_fields['.$row.']['.$field['id'].'][label]', 'Field Label', $field['label']);
+		$html .= Input::text($field['id'] . '_meta_key', 'ftp_fields['.$row.']['.$field['id'].'][meta_key]', 'Meta Key', $field['meta_key'], '', 'The id for the meta key that you would like to save to');
+
+		return $html;
+	}
+
+	/**
+	* Like standard settings but used for basic post things like title, slug, content, etc
+	* @param array $field
+	* @param array $row
+	*/
+	protected static function postContentSettings($field, $row)
+	{
+		$html = add_thickbox();
+		$html .= Input::hidden('ftp_fields['.$row.']['.$field['id'].'][type]', $field['type']);
+		$html .= Input::hidden('ftp_fields['.$row.']['.$field['id'].'][id]', $field['id']);
+
+		$html .= '<h3>Field Settings</h3>';
+		$html .= Input::checkbox($field['id'] . '_required', 'ftp_fields['.$row.']['.$field['id'].'][required]', 'Required Field', true, $field['required'], 'Is this field requried?');
+		$html .= Input::text($field['id'] . '_label', 'ftp_fields['.$row.']['.$field['id'].'][label]', 'Field Label', $field['label']);
 
 		return $html;
 	}
