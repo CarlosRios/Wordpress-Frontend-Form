@@ -5,6 +5,11 @@ class Validator {
 	private $data,
 			$fields;
 
+	/**
+	* Sets the posted data and the field data globally for the instance
+	* @param array $data
+	* @param array $fields
+	*/
 	public function __construct($data, $fields)
 	{
 		
@@ -12,34 +17,29 @@ class Validator {
 		$this->fields = $fields;	
 	}
 
+	/**
+	* Checks if the fields in the current instance are valid
+	* @return $errors or true if valid
+	*/
 	public function isValid()
 	{
-		$errors = [
-			'messages' 	=> [],
-			'fields'	=> []
-		];
-
+		$errors = [];
 		foreach($this->fields as $field)
 		{
 			// Check if its required
 			if( $field['required'] == true && empty($this->data[$field['id']]) )
-				$errors['messages'][] = $field['label'] . ' is required';
+				$errors[ $field['id'] ][] = $field['label'] . ' is required';
 
 			// Add validation per type
 			switch( $field['type'] ) {
 				case 'email':
 					if( filter_var( $this->data[ $field['id'] ] , FILTER_VALIDATE_EMAIL) == false ){
-						$errors['messages'][] = 'Please use a valid email address.';
+						$errors[ $field['id'] ][] = 'Please use a valid email address.';
 					}
 				break;
 			}
-
-			// Add the field id to the fields array
-			if( !empty($errors['messages']) )
-				$errors['fields'][] = $field['id'];
 		}
-
-		return !empty($errors['fields']) ? $errors : null;
+		return !empty($errors) ? $errors : null;
 	}
 
 }

@@ -3,14 +3,18 @@
 class Field{
 
 	/**
-	* Gets the field by type
-	* @param string $field
+	* Returns the proper field html
+	* @param array $field
 	*/
 	public static function getField($field)
 	{
 		return call_user_func([ 'FieldTypes', $field['type'] ], $field);
 	}
 
+	/**
+	* Returns label for field
+	* @param array $field
+	*/
 	public static function getLabel($field)
 	{
 		$label = '<label for="'.$field['id'].'">'.$field['label'].'</label>';

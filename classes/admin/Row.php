@@ -2,6 +2,12 @@
 
 class Row {
 
+	/**
+	* Creates a row
+	* @param integer $columns
+	* @param string $row_id
+	* @param array $fields
+	*/
 	public static function create($columns, $row_id = false, $fields = false)
 	{
 		$columnwidth = 12 / $columns;
@@ -30,6 +36,9 @@ class Row {
 		return $html;
 	}
 
+	/**
+	* Generates a random id for a new row
+	*/
 	private static function newRowID()
 	{
 		return 'row_'.uniqid();

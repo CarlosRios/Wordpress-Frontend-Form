@@ -8,8 +8,13 @@ class Form {
 		    $fields,
 		    $posted,
 		    $post_title,
-		    $post_content;
+		    $post_content,
+		    $errors;
 
+	/**
+	* Sets the form's id, rows, options, and fields globally for the instance.
+	* @param integer $id
+	*/
 	public function __construct($id)
 	{
 		$this->id = $id;
@@ -31,16 +36,21 @@ class Form {
 		}
 	}
 
-	private function formHtml($message = false, $message_class = false, $errors = false)
+	/**
+	* Renders the form's html
+	*/
+	private function formHtml($message = false, $message_class = false)
 	{
 		
 		if($message)
-			$html = Message::make($message, $message_class, $errors['messages']);
+			$html = Message::make($message, $message_class);
 
 		$html .= '<form action="'.get_the_permalink().'" method="post">';
-		if( !empty($this->rows) ){
-			foreach($this->rows as $row){
-				$html .= Row::create($row, $this->options, $errors['fields']);
+		if( !empty($this->rows) )
+		{
+			foreach($this->rows as $row)
+			{
+				$html .= Row::create($row, $this->options, $this->errors);
 			}
 		}
 		$html .= $this->submitButton();
@@ -57,11 +67,17 @@ class Form {
 		return '<input type="submit" name="ftp-submit" class="'.$this->options['button']['class'].'" value="'.$this->options['button']['text'].'"/>';
 	}
 
+	/**
+	* Sets the fields globally in the instance
+	*/
 	private function setFields()
 	{
-		foreach($this->rows as $row => $fields){
-			foreach($fields as $field){
-				switch($field['type']){
+		foreach($this->rows as $row => $fields)
+		{
+			foreach($fields as $field)
+			{
+				switch($field['type'])
+				{
 					case 'post_title':
 						$this->post_title = $field['id'];
 					break;
@@ -75,33 +91,49 @@ class Form {
 		return;
 	}
 
+	/**
+	* Sets the posted values globally in current instance
+	*/
 	private function setPostedValues()
 	{
-		foreach($this->fields as $field){
+		foreach($this->fields as $field)
+		{
 			$this->posted[$field['id']] = $_POST[$field['id']];
 		}
 		return $this;
 	}
 
+	/**
+	* Processes the form and returns message with form.
+	*/
 	private function processForm()
 	{
 		$this->setPostedValues();
 		$validator = new Validator($this->posted, $this->fields);
-		$errors = $validator->isValid();
+		$this->errors = $validator->isValid();
 
-		if( is_null($errors) ){
+		if( is_null($this->errors) )
+		{
 			$this->createPost();
 			return $this->formHtml('Thank you for your submission.', 'ftp-success');
-		}else{
-			return $this->formHtml('Ooops, Looks like there were some errors.', 'ftp-errors', $errors);
+		}else
+		{
+			return $this->formHtml('Ooops, Looks like there were some errors.', 'ftp-errors');
 		}
 	}
 
+	/**
+	* Gets the field's meta value
+	* @param string $field_id
+	*/
 	private function getFieldMetaKey($field_id)
 	{
 		return $this->fields[$field_id]['meta_key'];
 	}
 
+	/**
+	* Creates the new post with all of the settings
+	*/
 	private function createPost()
 	{
 		$post_id = wp_insert_post([

@@ -2,6 +2,9 @@
 
 class FieldTypes extends Field{
 
+	/**
+	* All field types must be placed here and have a corresponding static function
+	*/
 	public static $types = [
 		'text'			=> 'Text',
 		'email'			=> 'Email',
@@ -12,6 +15,9 @@ class FieldTypes extends Field{
 		'post_content'	=> 'Post Content'
 	];
 
+	/**
+	* Returns formatted html list for all the field types
+	*/
 	public static function getTypeItems()
 	{
 		foreach( self::$types as $type => $label ){

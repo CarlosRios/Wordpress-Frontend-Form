@@ -2,6 +2,9 @@
 
 class Form {
 
+	/**
+	* Echos the admin form
+	*/
 	public static function adminForm()
 	{	
 		$postid = get_the_ID();
@@ -9,12 +12,16 @@ class Form {
 		$html .= '<td class="ftp-sidebar ftp-padding-20">';
 		$html .= self::sidebarForm($postid);
 		$html .= '</td><td class="ftp-label ftp-padding-20">';
-		$html .= self::getFieldItems($postid);
+		$html .= self::formBuilder($postid);
 		$html .= '</td>';
 		$html .= '</tr></tbody></table><div class="ftp-loading"></div>';
 		echo $html;
 	}
 
+	/**
+	* Returns the sidebar form for admin form
+	* @param integer $postid
+	*/
 	public static function sidebarForm($postid)
 	{
 		// Gather post types in array
@@ -58,6 +65,11 @@ class Form {
 		return $html;
 	}
 
+	/**
+	* Checks if value is set and returns value or default it isn't set
+	* @param string $value
+	* @param string $default
+	*/
 	public static function valueOrDefault( $value = null, $default )
 	{
 		if(!is_null($value) && $value != ''){
@@ -66,7 +78,11 @@ class Form {
 		return $default;
 	}
 
-	public static function getFieldItems( $postid )
+	/**
+	* Returns html for the form builder
+	* @param integer $postid
+	*/
+	public static function formBuilder( $postid )
 	{
 		$rows = get_post_meta($postid, 'ftp_fields', true);
 
