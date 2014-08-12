@@ -51,12 +51,15 @@ class FormBuilder {
 			];
 			$html .= Input::createSettingsBlock('Add A New Row', '','dashicons-plus-alt', $fields);
 
+			/* Tabs Go Here */
+			$html .= '<a id="post" href="#" class="button button-large ftp-pagination-button">Post Fields</a>';
+			$html .= '<a id="basic" href="#" class="button button-large ftp-pagination-button">Basic Fields</a>';
+			$html .= '<a id="advanced" href="#" class="button button-large ftp-pagination-button">Advanced Fields</a>';
+
 			$fields = [
 				FieldTypes::getTypeItems()
 			];
-			$html .= Input::createSettingsBlock('Available Fields', 'Add rows, then drag & drop fields', 'dashicons-plus-alt', $fields);
-			$html .= '<a id="ftp-prev-fields" href="#" class="button button-large ftp-left ftp-pagination-button">&larr; Previous</a>';
-			$html .= '<a id="ftp-next-fields" href="#" class="button button-large ftp-right ftp-pagination-button">Next &rarr;</a>';
+			$html .= Input::createSettingsBlock('Available Fields', 'Add rows, then drag & drop fields', 'dashicons-plus-alt', $fields, 'ftp-field-types');
 			$html .= '<div class="ftp-clearfix"></div>';
 		$html .= '</div>';
 		return $html;

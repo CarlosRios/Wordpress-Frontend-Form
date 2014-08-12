@@ -36,17 +36,17 @@ jQuery(document).ready(function($){
 		}
 	}
 
-	function loadFieldTypesPage(action)
+	function loadFieldTypesPage(page)
 	{
 		loadingToggle('loading');
 		$.ajax({
 			type : 'post',
 			url : formtopost.ajaxurl,
-			data : { action: 'ftp_load_field_types_page' },
+			data : { action: 'ftp_load_field_types_page', page: page },
 			success : function(data){
 				loadingToggle('stopped'); // Remove loader
-				console.log(data);
-				//self.append(data);
+				var types = $('#ftp-field-types').html(data);
+				types.find('.ftp-field').draggable({ helper: "clone" });
 			}
 		});
 	}
@@ -116,10 +116,10 @@ jQuery(document).ready(function($){
 
 	// Add event to next and previous buttons
 	$(document).on('click', '.ftp-pagination-button', function(event){
-		var action = $(this).attr('id');
+		var page = $(this).attr('id');
 
 		// Trigger the ajax event
-		loadFieldTypesPage(action);
+		loadFieldTypesPage(page);
 		event.preventDefault();
 	});
 

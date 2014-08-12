@@ -21,13 +21,13 @@ class Input{
 	* @param string $icon
 	* @param array $fields;
 	*/
-	public static function createSettingsBlock($title, $desc = false, $icon, $fields)
+	public static function createSettingsBlock($title, $desc = false, $icon, $fields, $settings_container = false)
 	{
 		$html .= '<h2><div class="dashicons '.$icon.'"></div> '.$title.'</h2>';
 		if($desc)
 			$html .= '<p class="description">'.$desc.'</p>';
 
-		$html .= '<div class="ftp-form-settings">';
+		$html .= '<div id="'.$settings_container.'" class="ftp-form-settings">';
 			foreach($fields as $field){
 				$html .= $field;
 			}

@@ -25,7 +25,7 @@ class FtpAjax {
 	*/
 	public static function loadFieldTypesPage()
 	{
-		echo 'Page loaded';
+		echo FieldTypes::getTypeItems($_POST['page']);
 		die;	
 	}
 
