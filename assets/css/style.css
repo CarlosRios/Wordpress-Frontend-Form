@@ -8,6 +8,23 @@
 .ftp-clearfix{
 	clear:both;
 }
+
+/* Buttons */
+.ftp-remove-field-button{
+	border-radius: 0 3px 3px 0 !important;
+	-webkit-border-radius: 0 3px 3px 0 !important;
+	-moz-border-radius: 0 3px 3px 0 !important; 
+}
+.ftp-edit-field-button{
+	border-radius: 3px 0 0 3px !important;
+	-webkit-border-radius: 3px 0 0 3px !important;
+	-moz-border-radius: 3px 0 0 3px !important; 
+}
+.ftp-button > .dashicons{
+	margin-top: 4px;
+}
+
+/* Field List Styling */
 .ftp-list{
 	display:block;
 	margin-bottom: 1em;
@@ -32,6 +49,8 @@ li.ftp-list-item h4 span.ftp-header-field-type{
 .ftp-field-placeholder{
 	background: #f5f5f5 !important;
 }
+
+/* Field Wrapper */
 .ftp-field-wrapper, .ftp-header{
 	padding: 10px 20px;
 }
@@ -43,23 +62,6 @@ li.ftp-list-item h4 span.ftp-header-field-type{
 .ftp-wrapper-active{
 	display: block;
 }
-.ftp-remove-field-button{
-	border-radius: 0 3px 3px 0 !important;
-	-webkit-border-radius: 0 3px 3px 0 !important;
-	-moz-border-radius: 0 3px 3px 0 !important; 
-}
-.ftp-edit-field-button{
-	border-radius: 3px 0 0 3px !important;
-	-webkit-border-radius: 3px 0 0 3px !important;
-	-moz-border-radius: 3px 0 0 3px !important; 
-}
-.ftp-button > .dashicons{
-	margin-top: 4px;
-}
-.ftp-sidebar{
-	width:230px;
-}
-
 
 /* Field Container */
 .ftp-field-buttons-container{
@@ -102,11 +104,11 @@ li.ftp-list-item h4 span.ftp-header-field-type{
 	margin:0;
 	padding:0;
 }
-table td.ftp-padding-20{
-	padding:20px;
-}
 
 /* Sidebar Form */
+.ftp-sidebar{
+	width:230px;
+}
 .ftp-form-settings{
 	padding: 0 0 10px;
 	margin-bottom: 0px;
@@ -233,6 +235,9 @@ li.ftp-list-item div > ul.tiles > li{
 }
 
 /* Inside Table */
+table td.ftp-padding-20{
+	padding:20px;
+}
 #formsettings table.widefat, #formbuilder table.widefat{
 	border: none;
 }
