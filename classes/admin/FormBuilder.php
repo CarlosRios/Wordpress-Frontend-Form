@@ -2,17 +2,39 @@
 
 class FormBuilder {
 
+	private $_postid,
+			$_rows;
+
 	/**
-	* Echos the admin form
+	* Sets the id, rows, and returns get
+	* @return get()
 	*/
-	public static function adminForm()
+	public function __construct()
+	{
+		$this->_postid = get_the_ID();
+		$this->setRows();
+		return $this->get();
+	}
+
+	/**
+	* Sets the rows
+	*/
+	private function setRows()
+	{
+		$this->_rows = get_post_meta($this->_postid, 'ftp_fields', true);
+		return;
+	}
+
+	/**
+	* Echos the form builder
+	*/
+	private function get()
 	{	
-		$postid = get_the_ID();
 		$html = '<table class="widefat"><tbody><tr>';
 			$html .= '<td class="ftp-sidebar ftp-padding-20">';
-				$html .= self::sidebar($postid);
+				$html .= $this->sidebar();
 			$html .= '</td><td class="ftp-form-builder-wrapper ftp-padding-20">';
-				$html .= self::builderArea($postid);
+				$html .= $this->builderArea();
 			$html .= '</td>';
 		$html .= '</tr></tbody></table><div class="ftp-loading"></div>';
 		echo $html;
@@ -20,9 +42,8 @@ class FormBuilder {
 
 	/**
 	* Returns the sidebar form for admin form
-	* @param integer $postid
 	*/
-	public static function sidebar($postid)
+	private function sidebar()
 	{
 		$html = '<div class="ftp-form">';
 			$fields = [
@@ -43,16 +64,14 @@ class FormBuilder {
 
 	/**
 	* Returns html for the form builder
-	* @param integer $postid
 	*/
-	public static function builderArea( $postid )
+	private function builderArea()
 	{
-		$rows = get_post_meta($postid, 'ftp_fields', true);
 		$html .= '<div class="ftp-form ftp-form-builder">';
 			$html .= '<h2><div class="dashicons dashicons-admin-tools"></div> Form Builder</h2>';
 			$html .= '<ul id="ftp-row-list" class="ftp-list">';
-			if( !empty($rows) ){
-				foreach($rows as $row => $fields){
+			if( !empty($this->_rows) ){
+				foreach($this->_rows as $row => $fields){
 					$count = count($fields);
 					$html .= Row::create( $count, $row, $fields );
 				}

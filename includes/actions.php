@@ -24,7 +24,9 @@ if(is_admin())
 		add_meta_box( 'formsettings', 'Form Settings', function(){
 			$settings = new Settings;
 		}, 'formtopost', 'advanced', 'high');
-		add_meta_box( 'formbuilder', 'Form Builder', ['FormBuilder', 'adminForm'], 'formtopost', 'advanced', 'high' );
+		add_meta_box( 'formbuilder', 'Form Builder', function(){
+			$form_builder = new FormBuilder;
+		}, 'formtopost', 'advanced', 'high' );
 	});
 
 	/**

@@ -2,13 +2,20 @@
 
 class Settings {
 
-	private $postid;
+	private $_postid;
 
+	/**
+	* Sets the id, and returns form
+	* @return formHtml()
+	*/
 	public function __construct(){
-		$this->postid = get_the_ID();
+		$this->_postid = get_the_ID();
 		return $this->formHtml();
 	}
 
+	/**
+	* echo the form html
+	*/
 	private function formHtml()
 	{
 		$html = '<table class="widefat"><tbody><tr>';
@@ -37,7 +44,7 @@ class Settings {
 		$stati = get_post_stati();
 
 		// Set default options to prevent errors
-		if( ! $options = get_post_meta($this->postid, 'ftp_options', true) )
+		if( ! $options = get_post_meta($this->_postid, 'ftp_options', true) )
 			$options = ['button' => ['class' => '', 'text' => 'Submit'], 'post_type' => 'posts'];
 
 		$html = '<ul class="four_up tiles ftp-form">';
