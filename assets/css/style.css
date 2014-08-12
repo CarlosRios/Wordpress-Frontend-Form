@@ -1,4 +1,10 @@
 /* General Styles */
+.ftp-left{
+	float:left;
+}
+.ftp-right{
+	float: right;
+}
 .ftp-clearfix{
 	clear:both;
 }
@@ -12,14 +18,9 @@ li.ftp-list-item{
 	cursor: move;
 	border-radius: 2px;
 	margin-bottom: 0;
-	border: 1px solid #fff;
-	transition: background 0.2s ease-in-out;
-	-webkit-transition: background 0.2s ease-in-out;
-	-moz-transition: background 0.2s ease-in-out;
-}
-li.ftp-list-item:hover{
-	border: 1px solid #ddd;
-	background: #FFF;
+	transition: background 0.1s ease-in-out;
+	-webkit-transition: background 0.1s ease-in-out;
+	-moz-transition: background 0.1s ease-in-out;
 }
 li.ftp-list-item h4{
 	margin: 0 !important;
@@ -29,7 +30,7 @@ li.ftp-list-item h4 span.ftp-header-field-type{
 	font-weight: 400;
 }
 .ftp-field-placeholder{
-	background: #f0f0f0 !important;
+	background: #f5f5f5 !important;
 }
 .ftp-field-wrapper, .ftp-header{
 	padding: 10px 20px;
@@ -58,15 +59,9 @@ li.ftp-list-item h4 span.ftp-header-field-type{
 .ftp-sidebar{
 	width:230px;
 }
-.ftp-label{
-	border-left: 1px solid #E1E1E1;
-}
+
 
 /* Field Container */
-#ftp-field-list > li.ftp-list-item{
-	margin-bottom: 1em;
-	border: 1px dashed #ccc;
-}
 .ftp-field-buttons-container{
 	width:100px;
 	float:right;
@@ -96,32 +91,25 @@ li.ftp-list-item h4 span.ftp-header-field-type{
 /* Field Boxes*/
 .ftp-field{
 	background: #fff;
+	border: 1px dashed #CCC !important;
+	margin-bottom: .5em !important;
 	z-index: 999;
 }
 .ftp-field-attr-label{
 	width: 35%;
 }
-#formtopost .inside{
+#formbuilder .inside, #formsettings .inside{
 	margin:0;
 	padding:0;
 }
-#formtopost table td.ftp-padding-20{
+table td.ftp-padding-20{
 	padding:20px;
 }
 
 /* Sidebar Form */
-#ftp-form h2{
-	margin: 0 0 20px !important;
-	padding:0;
-}
-#ftp-form h2 > .dashicons{
-	line-height: 30px;
-}
 .ftp-form-settings{
-	background: #fafafa;
-	border: 1px dashed #ddd;
-	padding:20px 20px 30px;
-	margin-bottom:20px;
+	padding: 0 0 10px;
+	margin-bottom: 0px;
 }
 .ftp-form-settings label{
 	display:block;
@@ -130,6 +118,12 @@ li.ftp-list-item h4 span.ftp-header-field-type{
 }
 .ftp-form-settings input, .ftp-form-settings select, .ftp-form-settings textarea{
 	margin: 0 0 7px;
+}
+.ftp-form-settings select{
+	height: 30px;
+}
+.ftp-form-settings input[type="text"], .ftp-form-settings input[type="email"], .ftp-form-settings textarea{
+	width: 100%;
 }
 #ftp-form .ftp-input-wrapper{
 	border-bottom: 1px solid #ddd;
@@ -146,7 +140,7 @@ li.ftp-list-item div > ul.tiles > li{
 .ftp-row-box{
 	min-height: 50px;
 	border: 1px dashed #ccc;
-	background: #eaeaea;
+	background: #f5f5f5;
 }
 .ftp-field-container{
 	background: #FFF;
@@ -162,8 +156,8 @@ li.ftp-list-item div > ul.tiles > li{
 	-webkit-transition: background 0.2s ease-in-out;
 	-moz-transition: background 0.2s ease-in-out;
 	position: absolute;
-	right:-18px;
-	top:-18px;
+	right:-10px;
+	top:-10px;
 	background: #e14d43;
 	border: 1px solid #d02a21;
 	box-shadow: inset 0 1px 0 #e8756f,0 2px 3px rgba(0,0,0,.3);
@@ -179,12 +173,12 @@ li.ftp-list-item div > ul.tiles > li{
 
 /* Droppable */
 .ftp-drop-hover{
-	background: #EAF6FD;
+	background: #FCF6ED;
 }
 
 /* Modal */
 .ftp-field-modal{
-	padding: 50px;
+	padding: 20px;
 }
 .ftp-field-modal > .ftp-input-wrapper{
 	margin-bottom: 10px;
@@ -192,4 +186,58 @@ li.ftp-list-item div > ul.tiles > li{
 .ftp-field-modal > .ftp-input-wrapper > label{
 	display: block;
 	margin-bottom: 5px;
+}
+
+/* Settings */
+.ftp-form{
+	margin:0;
+	background: #FFF;
+}
+.ftp-form h2{
+	margin: 0 0 10px !important;
+	padding: 5px !important;
+	font-size: 1.1em !important;
+	background: #f3f3f3;
+	color: #777;
+}
+.ftp-form h2 > .dashicons{
+	line-height: 30px;
+}
+
+/* Form Builder */
+.ftp-form-builder{
+	padding: 20px;
+	box-shadow: 0 3px 4px rgba(0,0,0,0.2);
+	-webkit-box-shadow: 0 3px 4px rgba(0,0,0,0.2);
+	-moz-box-shadow: 0 3px 4px rgba(0,0,0,0.2);
+}
+.ftp-form-builder-wrapper{
+	background: #6F625A;
+}
+.ftp-form-builder .ftp-list-item:hover{
+	background: #FCF6ED;	
+}
+
+/* Handles */
+#formbuilder h3.hndle, #formsettings h3.hndle{
+	background: #CC6928;
+	padding: 17px;
+	color: #FFF;
+	font-size: 1.15em;
+	font-weight: 500;
+	border-bottom: none;
+}
+#formbuilder .handlediv, #formsettings .handlediv{
+	color:#FFF;
+	margin-top:9px;
+}
+
+/* Inside Table */
+#formsettings table.widefat, #formbuilder table.widefat{
+	border: none;
+}
+
+/* Inputs */
+.ftp-select-and-button{
+	margin-left: 10px !important;
 }

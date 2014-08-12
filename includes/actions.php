@@ -18,21 +18,35 @@ if(is_admin())
 	});
 
 	/**
-	* Generate and save form
+	* Generate metaboxes for settings and form builder
 	*/
 	add_action( 'add_meta_boxes', function(){
-		add_meta_box( 'formtopost', 'Form Layout', ['Form', 'adminForm'], 'formtopost' );
+		add_meta_box( 'formsettings', 'Form Settings', function(){
+			$settings = new Settings;
+		}, 'formtopost', 'advanced', 'high');
+		add_meta_box( 'formbuilder', 'Form Builder', ['FormBuilder', 'adminForm'], 'formtopost', 'advanced', 'high' );
 	});
-	add_action( 'save_post', ['Form', 'saveForm']);
+
+	/**
+	* Save Form
+	*/
+	add_action( 'save_post', function($postid){
+		update_post_meta($postid, 'ftp_options', $_POST['ftp_options']);
+		update_post_meta($postid, 'ftp_fields', $_POST['ftp_fields']);
+		return;
+	});
 
 	/**
 	* Ajax functions
 	*/
-	add_action( 'wp_ajax_ftp_add_field', ['FtpAjax', 'createNewField' ] );
+	add_action( 'wp_ajax_ftp_add_field', ['FtpAjax', 'createNewField'] );
 	add_action( 'wp_ajax_nopriv_ftp_add_field', ['FtpAjax', 'createNewField'] );
 
-	add_action( 'wp_ajax_ftp_add_row', ['FtpAjax', 'createNewRow' ] );
+	add_action( 'wp_ajax_ftp_add_row', ['FtpAjax', 'createNewRow'] );
 	add_action( 'wp_ajax_nopriv_ftp_add_row', ['FtpAjax', 'createNewRow'] );
+
+	add_action( 'wp_ajax_ftp_load_field_types_page', ['FtpAjax', 'loadFieldTypesPage'] );
+	add_action( 'wp_ajax_nopriv_ftp_load_field_types_page', ['FtpAjax', 'loadFieldTypesPage'] );
 }
 
 /**

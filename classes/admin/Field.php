@@ -19,7 +19,7 @@ class Field {
 					$html .= '<span class="ftp-header-label">'.$field['label'].'</span>';
 					$html .= ' <span class="ftp-header-field-type">('.$field['type'].')</span>';
 					$html .= '<div class="ftp-field-buttons-container">';
-						$html .= '<a href="#TB_inline?width=300height200&inlineId='.$field['id'].'_modal" class="thickbox button button-large ftp-edit-field-button ftp-button" title="Edit Field"><div class="dashicons dashicons-edit"></div></a>';
+						$html .= '<a href="#TB_inline?width=300&inlineId='.$field['id'].'_modal" class="thickbox button button-large ftp-edit-field-button ftp-button" title="Edit Field"><div class="dashicons dashicons-edit"></div></a>';
 						$html .= '<button class="ftp-remove-field-button button button-primary button-large ftp-button"><div class="dashicons dashicons-no-alt"></div></button>';
 					$html .= '</div>';
 					$html .= '<div class="ftp-clearfix"></div>';

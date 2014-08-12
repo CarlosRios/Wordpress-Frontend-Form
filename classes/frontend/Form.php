@@ -46,6 +46,7 @@ class Form {
 			$html = Message::make($message, $message_class);
 
 		$html .= '<form action="'.get_the_permalink().'" method="post">';
+		$html .= wp_nonce_field('ftp_nonce', 'ftp_nonce_field');
 		if( !empty($this->rows) )
 		{
 			foreach($this->rows as $row)
@@ -109,12 +110,19 @@ class Form {
 	private function processForm()
 	{
 		$this->setPostedValues();
+
+		// Verify nonce field.
+		if( !isset($_POST['ftp_nonce_field']) || !wp_verify_nonce($_POST['ftp_nonce_field'], 'ftp_nonce') ){
+			return false;
+		}
+
 		$validator = new Validator($this->posted, $this->fields);
 		$this->errors = $validator->isValid();
 
 		if( is_null($this->errors) )
 		{
 			$this->createPost();
+			unset($_POST); // Remove posted values
 			return $this->formHtml('Thank you for your submission.', 'ftp-success');
 		}else
 		{

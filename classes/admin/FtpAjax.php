@@ -20,4 +20,13 @@ class FtpAjax {
 		die;
 	}
 
+	/**
+	* Loads the page for the field types
+	*/
+	public static function loadFieldTypesPage()
+	{
+		echo 'Page loaded';
+		die;	
+	}
+
 }

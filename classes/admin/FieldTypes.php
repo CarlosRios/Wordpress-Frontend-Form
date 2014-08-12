@@ -6,26 +6,42 @@ class FieldTypes extends Field{
 	* All field types must be placed here and have a corresponding static function
 	*/
 	public static $types = [
+		'post_title'	=> 'Post Title',
+		'post_content'	=> 'Post Content',
 		'text'			=> 'Text',
 		'email'			=> 'Email',
 		'phone'			=> 'Phone',
 		'textarea'		=> 'Textarea',
 		'select'		=> 'Select',
-		'post_title'	=> 'Post Title',
-		'post_content'	=> 'Post Content'
+		'radio'			=> 'Radio',
+		'upload'		=> 'File Upload'
 	];
 
 	/**
 	* Returns formatted html list for all the field types
 	*/
-	public static function getTypeItems()
+	public static function getTypeItems($page = 1, $action = false)
 	{
-		foreach( self::$types as $type => $label ){
+		$types = array_chunk(self::$types, 2, true);
+
+		if($action = 'next')
+		{
+			$types = $types[$page + 1];
+		}
+		elseif($action == 'previous')
+		{
+			$types = $types[$page - 1];
+		}
+		else
+		{
+			$types = $types[0];
+		}
+		
+		foreach( $types as $type => $label ){
 			$html .= '<li id="'.$type.'" class="ftp-list-item ftp-field">';
 				$html .= '<div class="ftp-header">';
 					$html .= '<h4 class="ftp-field-label">';
 						$html .= '<span class="ftp-header-label">'.$label.' Field</span> ';
-						$html .= '<span class="ftp-header-field-type">('.$type.')</span>';
 					$html .= '</h4>';
 				$html .= '</div>';
 			$html .= '</li>';

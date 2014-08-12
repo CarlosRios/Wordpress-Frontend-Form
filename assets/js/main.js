@@ -1,5 +1,56 @@
 jQuery(document).ready(function($){
 
+	// Add functions
+	function makeItemDroppable(item)
+	{
+		item.find('.ftp-column-item').each(function(){
+			var self = $(this);
+			self.droppable({
+				hoverClass: 'ftp-drop-hover',
+				accept: '.ftp-field',
+				drop: function(event, ui){
+					var type = ui.draggable.attr('id');
+					// Init loader
+					loadingToggle('loading');
+					$.ajax({
+						type : 'post',
+						url : formtopost.ajaxurl,
+						data : { action: 'ftp_add_field', row: item.attr('id'), type: type },
+						success : function(data){
+							loadingToggle('stopped'); // Remove loader
+							self.append(data);
+						}
+					});
+				}
+			});
+		});
+	}
+
+	function loadingToggle(status)
+	{
+		var loader = $('.ftp-loading');
+		if(status == 'loading'){
+			loader.addClass('ftp-loading-active');
+		}else{
+			loader.removeClass('ftp-loading-active');
+		}
+	}
+
+	function loadFieldTypesPage(action)
+	{
+		loadingToggle('loading');
+		$.ajax({
+			type : 'post',
+			url : formtopost.ajaxurl,
+			data : { action: 'ftp_load_field_types_page' },
+			success : function(data){
+				loadingToggle('stopped'); // Remove loader
+				console.log(data);
+				//self.append(data);
+			}
+		});
+	}
+
 	// Make rows sortable
 	$('#ftp-row-list').sortable({
 		placeholder: 'ftp-field-placeholder',
@@ -37,41 +88,6 @@ jQuery(document).ready(function($){
 		event.preventDefault();
 	});
 
-	function makeItemDroppable(item)
-	{
-		item.find('.ftp-column-item').each(function(){
-			var self = $(this);
-			self.droppable({
-				hoverClass: 'ftp-drop-hover',
-				accept: '.ftp-field',
-				drop: function(event, ui){
-					var type = ui.draggable.attr('id');
-					// Init loader
-					loadingToggle('loading');
-					$.ajax({
-						type : 'post',
-						url : formtopost.ajaxurl,
-						data : { action: 'ftp_add_field', row: item.attr('id'), type: type },
-						success : function(data){
-							loadingToggle('stopped'); // Remove loader
-							self.append(data);
-						}
-					});
-				}
-			});
-		});
-	}
-
-	function loadingToggle(status)
-	{
-		var loader = $('.ftp-loading');
-		if(status == 'loading'){
-			loader.addClass('ftp-loading-active');
-		}else{
-			loader.removeClass('ftp-loading-active');
-		}
-	}
-
 	// Open thickbox on click
 	$(document).on('click', '.ftp-edit-field-button', function(event){
 		event.preventDefault();
@@ -84,9 +100,10 @@ jQuery(document).ready(function($){
 	});
 
 	// Remove row on click
-	$(document).on('click', '.ftp-remove-row-button', function(){
+	$(document).on('click', '.ftp-remove-row-button', function(event){
 		var item = $(this).parentsUntil('#ftp-row-list');
 		item.fadeOut().remove();
+		event.preventDefault();
 	});
 
 	// Change li header value when typing
@@ -95,5 +112,15 @@ jQuery(document).ready(function($){
 			parent = self.parentsUntil('ul.ftp-list'),
 			label = parent.find('.ftp-header-label');
 		label.text(self.val());
-	})
+	});
+
+	// Add event to next and previous buttons
+	$(document).on('click', '.ftp-pagination-button', function(event){
+		var action = $(this).attr('id');
+
+		// Trigger the ajax event
+		loadFieldTypesPage(action);
+		event.preventDefault();
+	});
+
 });

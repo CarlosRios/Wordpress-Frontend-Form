@@ -26,16 +26,26 @@ class Validator {
 		$errors = [];
 		foreach($this->fields as $field)
 		{
+			$value = $this->data[$field['id']];
+
 			// Check if its required
-			if( $field['required'] == true && empty($this->data[$field['id']]) )
+			if( $field['required'] == true && empty( $value ) )
 				$errors[ $field['id'] ][] = $field['label'] . ' is required';
 
 			// Add validation per type
 			switch( $field['type'] ) {
 				case 'email':
-					if( filter_var( $this->data[ $field['id'] ] , FILTER_VALIDATE_EMAIL) == false ){
+
+					if( filter_var( $value , FILTER_VALIDATE_EMAIL) == false )
 						$errors[ $field['id'] ][] = 'Please use a valid email address.';
-					}
+				
+				break;
+				case 'phone':
+				
+					$regex = '/^(\d[\s-]?)?[\(\[\s-]{0,2}?\d{3}[\)\]\s-]{0,2}?\d{3}[\s-]?\d{4}$/i';
+					if( ! preg_match( $regex, $value ) )
+						$errors[ $field['id'] ][] = 'Please use a valid phone number.';
+				
 				break;
 			}
 		}

@@ -38,7 +38,7 @@ class FieldTypes extends Field {
 
 	public static function phone($field)
 	{
-		$html = 'Phone';
+		$html = '<input id="'.$field['id'].'" name="'.$field['id'].'" type="tel" placeholder="'.$field['placeholder'].'" value="'.self::postedData($field['id']).'">';
 		return $html;
 	}
 
