@@ -4,7 +4,10 @@ jQuery(document).ready(function($){
 	function makeItemDroppable(item)
 	{
 		item.find('.ftp-column-item').each(function(){
-			var self = $(this);
+			var self = $(this),
+				row = item.attr('id'),
+				id = self.parent().find('.ftp-item-id').val();
+
 			self.droppable({
 				hoverClass: 'ftp-drop-hover',
 				accept: '.ftp-field',
@@ -15,7 +18,7 @@ jQuery(document).ready(function($){
 					$.ajax({
 						type : 'post',
 						url : formtopost.ajaxurl,
-						data : { action: 'ftp_add_field', row: item.attr('id'), type: type },
+						data : { action: 'ftp_add_field', row: row, id: id, type: type },
 						success : function(data){
 							loadingToggle('stopped'); // Remove loader
 							self.append(data);
@@ -38,13 +41,13 @@ jQuery(document).ready(function($){
 
 	function loadFieldTypesPage(page)
 	{
-		loadingToggle('loading');
+		//loadingToggle('loading');
 		$.ajax({
 			type : 'post',
 			url : formtopost.ajaxurl,
 			data : { action: 'ftp_load_field_types_page', page: page },
 			success : function(data){
-				loadingToggle('stopped'); // Remove loader
+				//loadingToggle('stopped'); // Remove loader
 				var types = $('#ftp-field-types').html(data);
 				types.find('.ftp-field').draggable({ helper: "clone" });
 			}
@@ -115,11 +118,11 @@ jQuery(document).ready(function($){
 	});
 
 	// Add event to next and previous buttons
-	$(document).on('click', '.ftp-pagination-button', function(event){
+	$(document).on('click', '.ftp-pagination-tab', function(event){
+		$('.ftp-active-tab').removeClass('ftp-active-tab');
 		var page = $(this).attr('id');
-
-		// Trigger the ajax event
 		loadFieldTypesPage(page);
+		$(this).addClass('ftp-active-tab');
 		event.preventDefault();
 	});
 

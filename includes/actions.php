@@ -13,8 +13,8 @@ if(is_admin())
 		wp_register_script( 'formtopost', FTP_URL . '/assets/js/main.js', 'jquery' );
 		wp_enqueue_script( 'formtopost' );
 		wp_localize_script( 'formtopost', 'formtopost', ['ajaxurl' => admin_url( 'admin-ajax.php' )] );
-		wp_enqueue_style( 'formtopost_style', FTP_URL . '/assets/css/style.css' );
-		wp_enqueue_style('ftp-grid', FTP_URL . '/assets/css/ftp-grid.css');
+		wp_enqueue_style( 'ftp_style', FTP_URL . '/assets/css/style.css' );
+		wp_enqueue_style('ftp-grid', FTP_URL . '/assets/css/grid.css');
 	});
 
 	/**

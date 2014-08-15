@@ -246,3 +246,25 @@ table td.ftp-padding-20{
 .ftp-select-and-button{
 	margin-left: 10px !important;
 }
+
+/* Formbuilder Tabs */
+#ftp-pagination-tab-container{
+	display: block;
+	overflow: hidden;
+	margin-bottom: 0.5em;
+}
+.ftp-pagination-tab{
+	padding: 1em;
+	text-decoration: none;
+	color: #666;
+	border-top: 1px solid #ccc;
+	border-bottom: 1px solid #ccc;
+	border-left: 1px solid #ccc;
+	float: left;
+}
+.ftp-pagination-tab-last{
+	border-right: 1px solid #ccc;
+}
+.ftp-active-tab{
+	background: #f1f1f1;
+}

@@ -38,3 +38,16 @@ function valueOrDefault( $value = null, $default )
 	}
 	return $default;
 }
+
+/**
+* Checks if field is blank
+* @param array $field
+* @return bool
+*/
+function ftpIsEmptyField($field)
+{
+	if( count($field) === 1 )
+		return true;
+
+	return false;
+}

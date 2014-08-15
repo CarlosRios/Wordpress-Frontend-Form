@@ -19,18 +19,27 @@ class Row {
 					$errs = $errors[ $field['id'] ];
 					
 					$html .= !empty($errs) ? '<li class="ftp-field-error">' : '<li>';
-					if($options['labels'])
-						$html .= Field::getLabel($field);
+						if( ! ftpisEmptyField($field) ) // Only continue if field isn't empty
+						{
+							// Display label
+							if($options['labels'])
+								$html .= Field::getLabel($field);
 
-						$html .= Field::getField($field);
+							// Get field
+							$html .= Field::getField($field);
 
-						// Display errors
-						if( !empty($errs) ){
-							$html .= '<div class="ftp-field-errors-container">';
-							foreach($errs as $e){
-								$html .= '<p>'.$e.'</p>';
+							// Display errors
+							if( !empty($errs) )
+							{
+								$html .= '<div class="ftp-field-errors-container">';
+								foreach($errs as $e){
+									$html .= '<p>'.$e.'</p>';
+								}
+								$html .= '</div>';
 							}
-							$html .= '</div>';
+						}else
+						{
+							$html .= '<div style="height:50px;"></div>';
 						}
 					$html .= '</li>';
 				}

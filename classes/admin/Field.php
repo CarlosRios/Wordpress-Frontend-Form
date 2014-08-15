@@ -7,11 +7,12 @@ class Field {
 	* @param array $row
 	* @param string $type
 	* @param array $field
+	* @param string $newid
 	*/
-	public static function createFieldItem($row, $type, $field)
+	public static function createFieldItem($row, $type, $field, $newid = false)
 	{
 		if( !$field )
-			$field = self::createNewField($type);
+			$field = self::createNewField($newid, $type);
 
 		$html = '<div class="ftp-field-container">';
 			$html .= '<div class="ftp-header">';
@@ -31,11 +32,12 @@ class Field {
 	}
 
 	/**
-	* Creates a new field with random id and type
+	* Creates a new field
+	* @param string $id
 	* @param string $type
 	*/
-	private static function createNewField($type){
-		return ['id' => 'field_'.uniqid(), 'label' => ucfirst($type) . ' Field' , 'type' => $type ];
+	private static function createNewField($id, $type){
+		return ['id' => $id, 'label' => ucfirst($type) . ' Field' , 'type' => $type ];
 	}
 
 	/**
@@ -60,7 +62,6 @@ class Field {
 	{
 		$html = add_thickbox();
 		$html .= Input::hidden('ftp_fields['.$row.']['.$field['id'].'][type]', $field['type']);
-		$html .= Input::hidden('ftp_fields['.$row.']['.$field['id'].'][id]', $field['id']);
 
 		$html .= '<h3>Field Settings</h3>';
 		$html .= Input::checkbox($field['id'] . '_required', 'ftp_fields['.$row.']['.$field['id'].'][required]', 'Required Field', true, $field['required'], 'Is this field requried?');

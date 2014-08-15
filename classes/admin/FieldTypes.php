@@ -6,8 +6,8 @@ class FieldTypes extends Field{
 	* All field types must be placed here and have a corresponding static function
 	*/
 	private static $_fields_post = [
-		'post_title'	=> 'Post Title',
-		'post_content'	=> 'Post Content',
+		'post_title'	=> 'Title',
+		'post_content'	=> 'Content',
 	];
 
 	private static $_fields_basic = [

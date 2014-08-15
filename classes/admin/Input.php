@@ -21,11 +21,13 @@ class Input{
 	* @param string $icon
 	* @param array $fields;
 	*/
-	public static function createSettingsBlock($title, $desc = false, $icon, $fields, $settings_container = false)
+	public static function createSettingsBlock($title, $desc = false, $icon, $fields, $settings_container = false, $extra = false)
 	{
 		$html .= '<h2><div class="dashicons '.$icon.'"></div> '.$title.'</h2>';
-		if($desc)
+		if( $desc )
 			$html .= '<p class="description">'.$desc.'</p>';
+
+		$html .= $extra;
 
 		$html .= '<div id="'.$settings_container.'" class="ftp-form-settings">';
 			foreach($fields as $field){
@@ -44,9 +46,9 @@ class Input{
 		return $label;
 	}
 
-	public static function hidden($name, $value)
+	public static function hidden($name, $value, $class = false)
 	{
-		$input = '<input type="hidden" name="'.$name.'" value="'.$value.'">';
+		$input = '<input class="'.$class.'" type="hidden" name="'.$name.'" value="'.$value.'">';
 		return $input;
 	}
 

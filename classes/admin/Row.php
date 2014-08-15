@@ -13,20 +13,34 @@ class Row {
 		$columnwidth = 12 / $columns;
 
 		if( !$row_id ) 
-			$row_id = self::newRowID();
+			$row_id = self::newID('row_');
 
 		$html = '<li id="'.$row_id.'" class="ftp-list-item">';
 			$html .= '<div class="row">';
 				$html .= '<ul class="'. numberToWord($columns) .'_up tiles">';
 					if( !empty($fields) ){
 						foreach($fields as $field){
+
 							$html .= '<li><div class="ftp-row-box ftp-column-item">';
+
+							if( ! ftpIsEmptyField($field) ) // Check if its empty
+							{
 								$html .= Field::createFieldItem($row_id, $field['type'], $field);
-							$html .= '</div></li>';
+							}
+
+							$html .= '</div>';
+							$html .= Input::hidden( 'ftp_fields['.$row_id.']['.$field['id'].'][id]', $field['id'], 'ftp-item-id' );
+							$html .= '</li>';
+							
 						}
 					}else{
 						for ($i=1; $i <= $columns; $i++) {
-							$html .= '<li><div class="ftp-row-box ftp-column-item"></div></li>';
+
+							$field_id = self::newID('field_'); // Create a new field id.
+							$field_name = 'ftp_fields['.$row_id.']['.$field_id.'][id]'; // Create the field name
+
+							$html .= '<li><div class="ftp-row-box ftp-column-item"></div>'.Input::hidden($field_name, $field_id, 'ftp-item-id'). '</li>';
+
 						}
 					}
 				$html .= '</ul>';
@@ -38,10 +52,11 @@ class Row {
 
 	/**
 	* Generates a random id for a new row
+	* @param string $prefix
 	*/
-	private static function newRowID()
+	private static function newID($prefix)
 	{
-		return 'row_'.uniqid();
+		return $prefix . uniqid();
 	}
 	
 }

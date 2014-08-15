@@ -7,7 +7,7 @@ class FtpAjax {
 	*/
 	public static function createNewField()
 	{
-		echo Field::createFieldItem($_POST['row'], $_POST['type'], false);
+		echo Field::createFieldItem($_POST['row'], $_POST['type'], false, $_POST['id']);
 		die;
 	}
 
