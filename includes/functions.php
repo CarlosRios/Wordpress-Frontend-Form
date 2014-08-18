@@ -22,6 +22,13 @@ function numberToWord($number)
 		3 	=> 'three',
 		4	=> 'four',
 		5	=> 'five',
+		6	=> 'six',
+		7	=> 'seven',
+		8 	=> 'eight',
+		9	=> 'nine',
+		10	=> 'ten',
+		11	=> 'eleven',
+		12	=> 'twelve'
 	];
 	return $numbers[$number];
 }
@@ -50,4 +57,16 @@ function ftpIsEmptyField($field)
 		return true;
 
 	return false;
+}
+
+/**
+* Returns the number of new posts that have been submitted through
+* the form for a specific post type
+* @param string $post_type
+* @return integer $count
+*/
+function ftpNewPostsCount($post_type)
+{
+
+	return 5;
 }

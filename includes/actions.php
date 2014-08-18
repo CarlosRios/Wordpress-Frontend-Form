@@ -13,7 +13,7 @@ if(is_admin())
 		wp_register_script( 'formtopost', FTP_URL . '/assets/js/main.js', 'jquery' );
 		wp_enqueue_script( 'formtopost' );
 		wp_localize_script( 'formtopost', 'formtopost', ['ajaxurl' => admin_url( 'admin-ajax.php' )] );
-		wp_enqueue_style( 'ftp_style', FTP_URL . '/assets/css/style.css' );
+		wp_enqueue_style( 'ftp-style-admin', FTP_URL . '/assets/css/style.css' );
 		wp_enqueue_style('ftp-grid', FTP_URL . '/assets/css/grid.css');
 	});
 
@@ -49,6 +49,27 @@ if(is_admin())
 
 	add_action( 'wp_ajax_ftp_load_field_types_page', ['FtpAjax', 'loadFieldTypesPage'] );
 	add_action( 'wp_ajax_nopriv_ftp_load_field_types_page', ['FtpAjax', 'loadFieldTypesPage'] );
+
+	/**
+	* Menu Interactions
+	*/
+	add_action( 'admin_menu', function(){
+		global $menu;
+		$count = ftpNewPostsCount('posts');
+
+		if( $count )
+		{
+			foreach( $menu as $key => $value )
+			{
+				if( $menu[$key][2] == 'edit.php' )
+				{
+					$menu[$key][0] .= " <span class='update-leads update-plugins count-$count'><span class='lead-count plugin-count'>" . number_format_i18n($count) . '</span></span>';
+					return;
+				}
+			}
+		}
+	});
+
 }
 
 /**
@@ -56,5 +77,6 @@ if(is_admin())
 */
 add_action( 'wp_enqueue_scripts', function(){
 	wp_enqueue_style( 'ftp-frontend', FTP_URL . '/assets/css/frontend.css' );
-	wp_enqueue_style( 'ftp-grid', FTP_URL . '/assets/css/ftp-grid.css' );
+	wp_enqueue_style( 'ftp-grid', FTP_URL . '/assets/css/grid.css' );
+	wp_register_style( 'ftp-gumby', FTP_URL . '/assets/css/gumby.css' );
 });

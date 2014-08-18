@@ -2,14 +2,14 @@
 /**
 * @package WordPress Form To Post
 * @author Carlos Rios
-* @version 0.1.9
+* @version 0.2
 */
 /*
 Plugin Name: Form To Post
 Plugin URI: http://www.1kingdomcreative.com
 Description: Creates a form that is used to populate a post type with custom meta keys.
 Author: Carlos Rios
-Version: 0.1.9
+Version: 0.2
 Author URI: http://www.1kingdomcreative.com
 */
 
@@ -45,3 +45,4 @@ define( 'FTP_URL', plugins_url('', __FILE__) );
 require_once FTP_DIR . '/includes/functions.php';
 require_once FTP_DIR . '/includes/post-types.php';
 require_once FTP_DIR . '/includes/actions.php';
+

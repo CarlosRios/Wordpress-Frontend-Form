@@ -21,6 +21,10 @@ class Form {
 		$this->rows = get_post_meta($this->id, 'ftp_fields', true);
 		$this->options = get_post_meta($this->id, 'ftp_options', true);
 		$this->setFields();
+
+		if( $this->options['apply_styles'] == true ){
+			wp_enqueue_style('ftp-gumby');
+		}
 	}
 
 	/**
@@ -45,7 +49,7 @@ class Form {
 		if($message)
 			$html = Message::make($message, $message_class);
 
-		$html .= '<form action="'.get_the_permalink().'" method="post">';
+		$html .= '<form id="ftp_form_'.$this->id.'" action="'.get_the_permalink().'" method="post">';
 		$html .= wp_nonce_field('ftp_nonce', 'ftp_nonce_field');
 		if( !empty($this->rows) )
 		{
@@ -65,7 +69,7 @@ class Form {
 	*/
 	private function submitButton()
 	{
-		return '<input type="submit" name="ftp-submit" class="'.$this->options['button']['class'].'" value="'.$this->options['button']['text'].'"/>';
+		return '<div class="row"><input type="submit" name="ftp-submit" class="'.$this->options['button']['class'].'" value="'.$this->options['button']['text'].'"/></div>';
 	}
 
 	/**
@@ -123,10 +127,10 @@ class Form {
 		{
 			$this->createPost();
 			unset($_POST); // Remove posted values
-			return $this->formHtml('Thank you for your submission.', 'ftp-success');
+			return $this->formHtml('Thank you for your submission.', 'ftp-success success alert');
 		}else
 		{
-			return $this->formHtml('Ooops, Looks like there were some errors.', 'ftp-errors');
+			return $this->formHtml('Ooops, Looks like there were some errors.', 'ftp-errors danger alert');
 		}
 	}
 

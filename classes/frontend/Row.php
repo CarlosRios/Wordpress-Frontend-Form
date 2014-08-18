@@ -10,15 +10,17 @@ class Row {
 	*/
 	public static function create($fields, $options, $errors = false)
 	{
-		$html .= '<div class"row">';
+		$html .= '<div class="row">';
 			$count = count($fields);
-			$count = numberToWord($count);
-			$html .= '<ul class="'.$count.'_up tiles">';
+			$column = 12 / $count;
+			$column = numberToWord($column);
+
 				foreach($fields as $field)
 				{
 					$errs = $errors[ $field['id'] ];
 					
-					$html .= !empty($errs) ? '<li class="ftp-field-error">' : '<li>';
+					$html .= '<div class="'.$column.' columns">';
+					$html .= !empty($errs) ? '<div class="field ftp-field-error">' : '<div class="field">';
 						if( ! ftpisEmptyField($field) ) // Only continue if field isn't empty
 						{
 							// Display label
@@ -33,17 +35,18 @@ class Row {
 							{
 								$html .= '<div class="ftp-field-errors-container">';
 								foreach($errs as $e){
-									$html .= '<p>'.$e.'</p>';
+									$html .= '<p class="danger label">'.$e.'</p>';
 								}
 								$html .= '</div>';
 							}
 						}else
 						{
-							$html .= '<div style="height:50px;"></div>';
+							$html .= '<div style="height:1px;"></div>';
 						}
-					$html .= '</li>';
+					$html .= '</div>';
+					$html .= '</div>';
 				}
-			$html .= '</ul>';
+
 		$html .= '</div>';
 		return $html;
 	}
