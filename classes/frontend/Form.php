@@ -154,16 +154,22 @@ class Form {
 			'post_title'	=> wp_strip_all_tags($this->posted[$this->post_title]),
 			'post_content'	=> $this->posted[$this->post_content],
 		]);
-		
-		/*foreach ($this->posted as $field_id => $value){
+
+		foreach ($this->posted as $field_id => $value){
 			if( $field_id != $this->post_title && $field_id != $this->post_content){
 				add_post_meta($post_id, $this->getFieldMetaKey($field_id), $value);
 			}
-		}*/
+		}
 
 		/*foreach ($this->gather_terms() as $tax => $term){
 			wp_set_post_terms($new_id, $term, $tax);
 		}*/
+
+		// Store count as a transient for 2 days
+		$counts = get_transient( 'ftp_posts_count_' . $this->options['post_type'] );
+		$counts = $counts + 1;
+		set_transient( 'ftp_posts_count_' . $this->options['post_type'], $counts, 2 * DAY_IN_SECONDS );
+
 		return;
 	}
 

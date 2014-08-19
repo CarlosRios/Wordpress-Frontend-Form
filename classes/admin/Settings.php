@@ -32,12 +32,10 @@ class Settings {
 	private function getSettings()
 	{
 		// Gather post types in array
-		$post_types = get_post_types('', 'objects');
+		$post_types = get_post_types(['public' => true], 'objects');
 		$types = [];
 		foreach($post_types as $type){
-			if( $type->name != 'formtopost'){ // Don't want to be creating new forms.
-				$types[$type->name] = $type->labels->name;
-			}
+			$types[$type->name] = $type->labels->name;
 		}
 
 		// Gather status' in array
@@ -74,6 +72,16 @@ class Settings {
 				];
 				$html .= Input::createSettingsBlock('Display Settings', '', 'dashicons-format-aside', $fields);
 
+			$html .= '</li>';
+
+			$html .= '<li>';
+
+				$fields = [
+					Input::text('ftp-form-options-message-success', 'ftp_options[message][success]', 'Success Message', $options['message']['success'], false, 'The message a user sees when their submission is successful.'),
+					Input::text('ftp-form-options-message-error', 'ftp_options[message][error]', 'Error Message', $options['message']['error'], false, 'The message a user sees when their submission has errors.')
+				];
+				$html .= Input::createSettingsBlock('User Notifications', '', 'dashicons-megaphone', $fields);
+			
 			$html .= '</li>';
 
 		$html .= '</ul>';

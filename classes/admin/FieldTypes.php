@@ -16,7 +16,8 @@ class FieldTypes extends Field{
 		'phone'			=> 'Phone',
 		'textarea'		=> 'Textarea',
 		'select'		=> 'Select',
-		'radio'			=> 'Radio'
+		'radio'			=> 'Radio',
+		'checkbox'		=> 'Checkbox'
 	];
 
 	private static $_fields_advanced = [
