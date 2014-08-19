@@ -127,10 +127,13 @@ class Form {
 		{
 			$this->createPost();
 			unset($_POST); // Remove posted values
-			return $this->formHtml('Thank you for your submission.', 'wpff-success success alert');
+			$success = !empty($this->options['message']['success']) ? $this->options['message']['success'] : 'Thank you for your submission.';
+
+			return $this->formHtml($success, 'wpff-success success alert');
 		}else
 		{
-			return $this->formHtml('Ooops, Looks like there were some errors.', 'wpff-errors danger alert');
+			$error = !empty($this->options['message']['error']) ? $this->options['message']['error'] : 'Ooops, Looks like there were some errors.';
+			return $this->formHtml($error, 'wpff-errors danger alert');
 		}
 	}
 
