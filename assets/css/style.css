@@ -1,35 +1,35 @@
 /* General Styles */
-.ftp-left{
+.wpff-left{
 	float:left;
 }
-.ftp-right{
+.wpff-right{
 	float: right;
 }
-.ftp-clearfix{
+.wpff-clearfix{
 	clear:both;
 }
 
 /* Buttons */
-.ftp-remove-field-button{
+.wpff-remove-field-button{
 	border-radius: 0 3px 3px 0 !important;
 	-webkit-border-radius: 0 3px 3px 0 !important;
 	-moz-border-radius: 0 3px 3px 0 !important; 
 }
-.ftp-edit-field-button{
+.wpff-edit-field-button{
 	border-radius: 3px 0 0 3px !important;
 	-webkit-border-radius: 3px 0 0 3px !important;
 	-moz-border-radius: 3px 0 0 3px !important; 
 }
-.ftp-button > .dashicons{
+.wpff-button > .dashicons{
 	margin-top: 4px;
 }
 
 /* Field List Styling */
-.ftp-list{
+.wpff-list{
 	display:block;
 	margin-bottom: 1em;
 }
-li.ftp-list-item{
+li.wpff-list-item{
 	position: relative;
 	display: block;
 	cursor: move;
@@ -39,39 +39,39 @@ li.ftp-list-item{
 	-webkit-transition: background 0.1s ease-in-out;
 	-moz-transition: background 0.1s ease-in-out;
 }
-li.ftp-list-item h4{
+li.wpff-list-item h4{
 	margin: 0 !important;
 	line-height: 30px;
 }
-li.ftp-list-item h4 span.ftp-header-field-type{
+li.wpff-list-item h4 span.wpff-header-field-type{
 	font-weight: 400;
 }
-.ftp-field-placeholder{
+.wpff-field-placeholder{
 	background: #f5f5f5 !important;
 }
 
 /* Field Wrapper */
-.ftp-field-wrapper, .ftp-header{
+.wpff-field-wrapper, .wpff-header{
 	padding: 10px 20px;
 }
-.ftp-field-wrapper{
+.wpff-field-wrapper{
 	background: #F2FCFF;
 	border-top: 1px solid #dadada;
 	display:none;
 }
-.ftp-wrapper-active{
+.wpff-wrapper-active{
 	display: block;
 }
 
 /* Field Container */
-.ftp-field-buttons-container{
+.wpff-field-buttons-container{
 	width:100px;
 	float:right;
 	text-align: right;
 }
 
 /* Loader */
-.ftp-loading{
+.wpff-loading{
 	display: none;
 	visibility: 0;
 	position: absolute;
@@ -85,19 +85,19 @@ li.ftp-list-item h4 span.ftp-header-field-type{
 	-webkit-transition: background 0.2s ease-in-out;
 	-moz-transition: background 0.2s ease-in-out;
 }
-.ftp-loading-active{
+.wpff-loading-active{
 	display: block !important;
 	visibility: 1 !important;
 }
 
 /* Field Boxes*/
-.ftp-field{
+.wpff-field{
 	background: #fff;
 	border: 1px dashed #CCC !important;
 	margin-bottom: .5em !important;
 	z-index: 999;
 }
-.ftp-field-attr-label{
+.wpff-field-attr-label{
 	width: 35%;
 }
 #formbuilder .inside, #formsettings .inside{
@@ -106,52 +106,52 @@ li.ftp-list-item h4 span.ftp-header-field-type{
 }
 
 /* Sidebar Form */
-.ftp-sidebar{
+.wpff-sidebar{
 	width:230px;
 }
-.ftp-form-settings{
+.wpff-form-settings{
 	padding: 0 0 10px;
 	margin-bottom: 0px;
 }
-.ftp-form-settings label{
+.wpff-form-settings label{
 	display:block;
 	padding: 6px 0;
 	font-weight: 800;
 }
-.ftp-form-settings input, .ftp-form-settings select, .ftp-form-settings textarea{
+.wpff-form-settings input, .wpff-form-settings select, .wpff-form-settings textarea{
 	margin: 0 0 7px;
 }
-.ftp-form-settings select{
+.wpff-form-settings select{
 	height: 30px;
 }
-.ftp-form-settings input[type="text"], .ftp-form-settings input[type="email"], .ftp-form-settings textarea{
+.wpff-form-settings input[type="text"], .wpff-form-settings input[type="email"], .wpff-form-settings textarea{
 	width: 100%;
 }
-#ftp-form .ftp-input-wrapper{
+#wpff-form .wpff-input-wrapper{
 	border-bottom: 1px solid #ddd;
 	margin-bottom: 5px;
 }
 
 /* Rows */
-#ftp-row-list > li{
+#wpff-row-list > li{
 	padding: 10px;
 }
-li.ftp-list-item div > ul.tiles > li{
+li.wpff-list-item div > ul.tiles > li{
 	margin-bottom: 0 !important;
 }
-.ftp-row-box{
+.wpff-row-box{
 	min-height: 50px;
 	border: 1px dashed #ccc;
 	background: #f5f5f5;
 }
-.ftp-field-container{
+.wpff-field-container{
 	background: #FFF;
 }
-.ftp-list-item:hover .ftp-remove-row-button{
+.wpff-list-item:hover .wpff-remove-row-button{
 	display: block;
 	visibility: 1;
 }
-.ftp-remove-row-button{
+.wpff-remove-row-button{
 	display: none;
 	visibility: 0;
 	transition: background 0.2s ease-in-out;
@@ -174,49 +174,49 @@ li.ftp-list-item div > ul.tiles > li{
 }
 
 /* Droppable */
-.ftp-drop-hover{
+.wpff-drop-hover{
 	background: #FCF6ED;
 }
 
 /* Modal */
-.ftp-field-modal{
+.wpff-field-modal{
 	padding: 20px;
 }
-.ftp-field-modal > .ftp-input-wrapper{
+.wpff-field-modal > .wpff-input-wrapper{
 	margin-bottom: 10px;
 }
-.ftp-field-modal > .ftp-input-wrapper > label{
+.wpff-field-modal > .wpff-input-wrapper > label{
 	display: block;
 	margin-bottom: 5px;
 }
 
 /* Settings */
-.ftp-form{
+.wpff-form{
 	margin:0;
 	background: #FFF;
 }
-.ftp-form h2{
+.wpff-form h2{
 	margin: 0 0 10px !important;
 	padding: 5px !important;
 	font-size: 1.1em !important;
 	background: #f3f3f3;
 	color: #777;
 }
-.ftp-form h2 > .dashicons{
+.wpff-form h2 > .dashicons{
 	line-height: 30px;
 }
 
 /* Form Builder */
-.ftp-form-builder{
+.wpff-form-builder{
 	padding: 20px;
 	box-shadow: 0 3px 4px rgba(0,0,0,0.2);
 	-webkit-box-shadow: 0 3px 4px rgba(0,0,0,0.2);
 	-moz-box-shadow: 0 3px 4px rgba(0,0,0,0.2);
 }
-.ftp-form-builder-wrapper{
+.wpff-form-builder-wrapper{
 	background: #6F625A;
 }
-.ftp-form-builder .ftp-list-item:hover{
+.wpff-form-builder .wpff-list-item:hover{
 	background: #FCF6ED;	
 }
 
@@ -235,7 +235,7 @@ li.ftp-list-item div > ul.tiles > li{
 }
 
 /* Inside Table */
-table td.ftp-padding-20{
+table td.wpff-padding-20{
 	padding:20px;
 }
 #formsettings table.widefat, #formbuilder table.widefat{
@@ -243,17 +243,17 @@ table td.ftp-padding-20{
 }
 
 /* Inputs */
-.ftp-select-and-button{
+.wpff-select-and-button{
 	margin-left: 10px !important;
 }
 
 /* Formbuilder Tabs */
-#ftp-pagination-tab-container{
+#wpff-pagination-tab-container{
 	display: block;
 	overflow: hidden;
 	margin-bottom: 0.5em;
 }
-.ftp-pagination-tab{
+.wpff-pagination-tab{
 	padding: 1em;
 	text-decoration: none;
 	color: #666;
@@ -262,9 +262,9 @@ table td.ftp-padding-20{
 	border-left: 1px solid #ccc;
 	float: left;
 }
-.ftp-pagination-tab-last{
+.wpff-pagination-tab-last{
 	border-right: 1px solid #ccc;
 }
-.ftp-active-tab{
+.wpff-active-tab{
 	background: #f1f1f1;
 }

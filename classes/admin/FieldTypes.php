@@ -42,10 +42,10 @@ class FieldTypes extends Field{
 		}
 
 		foreach( $types as $type => $label ){
-			$html .= '<li id="'.$type.'" class="ftp-list-item ftp-field">';
-				$html .= '<div class="ftp-header">';
-					$html .= '<h4 class="ftp-field-label">';
-						$html .= '<span class="ftp-header-label">'.$label.' Field</span> ';
+			$html .= '<li id="'.$type.'" class="wpff-list-item wpff-field">';
+				$html .= '<div class="wpff-header">';
+					$html .= '<h4 class="wpff-field-label">';
+						$html .= '<span class="wpff-header-label">'.$label.' Field</span> ';
 					$html .= '</h4>';
 				$html .= '</div>';
 			$html .= '</li>';
@@ -63,7 +63,7 @@ class FieldTypes extends Field{
 	public static function select($field, $row)
 	{
 		$html = self::standardSettings($field, $row);
-		$html .= Input::text($field['id'] . '_options', 'ftp_fields['.$row.']['.$field['id'].'][options]', 'Field Options', $field['options'], '', 'Enter a comma separated list');
+		$html .= Input::text($field['id'] . '_options', 'wpff_fields['.$row.']['.$field['id'].'][options]', 'Field Options', $field['options'], '', 'Enter a comma separated list');
 		return $html;
 	}
 

@@ -7,7 +7,7 @@ class Input{
 
 	private static function wrapperStart()
 	{
-		return '<div class="ftp-input-wrapper">';
+		return '<div class="wpff-input-wrapper">';
 	}
 
 	private static function wrapperEnd()
@@ -29,7 +29,7 @@ class Input{
 
 		$html .= $extra;
 
-		$html .= '<div id="'.$settings_container.'" class="ftp-form-settings">';
+		$html .= '<div id="'.$settings_container.'" class="wpff-form-settings">';
 			foreach($fields as $field){
 				$html .= $field;
 			}
@@ -104,7 +104,7 @@ class Input{
 					}
 				}
 			$select .= '</select>';
-			$select .= '<button id="'.$button_id.'" class="button button-primary button-large ftp-select-and-button">'.$button_text.'</button>';
+			$select .= '<button id="'.$button_id.'" class="button button-primary button-large wpff-select-and-button">'.$button_text.'</button>';
 		$select .= self::wrapperEnd();
 		return $select;
 	}

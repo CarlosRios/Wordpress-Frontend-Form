@@ -21,7 +21,7 @@ class FormBuilder {
 	*/
 	private function setRows()
 	{
-		$this->_rows = get_post_meta($this->_postid, 'ftp_fields', true);
+		$this->_rows = get_post_meta($this->_postid, 'wpff_fields', true);
 		return;
 	}
 
@@ -31,12 +31,12 @@ class FormBuilder {
 	private function get()
 	{	
 		$html = '<table class="widefat"><tbody><tr>';
-			$html .= '<td class="ftp-sidebar ftp-padding-20">';
+			$html .= '<td class="wpff-sidebar wpff-padding-20">';
 				$html .= $this->sidebar();
-			$html .= '</td><td class="ftp-form-builder-wrapper ftp-padding-20">';
+			$html .= '</td><td class="wpff-form-builder-wrapper wpff-padding-20">';
 				$html .= $this->builderArea();
 			$html .= '</td>';
-		$html .= '</tr></tbody></table><div class="ftp-loading"></div>';
+		$html .= '</tr></tbody></table><div class="wpff-loading"></div>';
 		echo $html;
 	}
 
@@ -45,9 +45,9 @@ class FormBuilder {
 	*/
 	private function sidebar()
 	{
-		$html = '<div class="ftp-form">';
+		$html = '<div class="wpff-form">';
 			$fields = [
-				Input::selectAndButton('ftp-new-row-columns', '', 'Number Of Columns', 3, [1 => 1, 2 => 2, 3 => 3, 4 => 4, 5 => 5], '', 'ftp-add-row-button', 'Add Row')
+				Input::selectAndButton('wpff-new-row-columns', '', 'Number Of Columns', 3, [1 => 1, 2 => 2, 3 => 3, 4 => 4, 5 => 5], '', 'wpff-add-row-button', 'Add Row')
 			];
 			$html .= Input::createSettingsBlock('Add A New Row', '','dashicons-plus-alt', $fields);
 
@@ -55,14 +55,14 @@ class FormBuilder {
 				FieldTypes::getTypeItems()
 			];
 
-			$extra = '<div id="ftp-pagination-tab-container">';
-			$extra .= '<a id="post" href="#" class="ftp-pagination-tab ftp-active-tab">Post</a>';
-			$extra .= '<a id="basic" href="#" class="ftp-pagination-tab">Basic</a>';
-			$extra .= '<a id="advanced" href="#" class="ftp-pagination-tab ftp-pagination-tab-last">Advanced</a>';
+			$extra = '<div id="wpff-pagination-tab-container">';
+			$extra .= '<a id="post" href="#" class="wpff-pagination-tab wpff-active-tab">Post</a>';
+			$extra .= '<a id="basic" href="#" class="wpff-pagination-tab">Basic</a>';
+			$extra .= '<a id="advanced" href="#" class="wpff-pagination-tab wpff-pagination-tab-last">Advanced</a>';
 			$extra .= '</div>';
 
-			$html .= Input::createSettingsBlock('Available Fields', 'Add rows, then drag & drop fields', 'dashicons-plus-alt', $fields, 'ftp-field-types', $extra);
-			$html .= '<div class="ftp-clearfix"></div>';
+			$html .= Input::createSettingsBlock('Available Fields', 'Add rows, then drag & drop fields', 'dashicons-plus-alt', $fields, 'wpff-field-types', $extra);
+			$html .= '<div class="wpff-clearfix"></div>';
 		$html .= '</div>';
 		return $html;
 	}
@@ -72,9 +72,9 @@ class FormBuilder {
 	*/
 	private function builderArea()
 	{
-		$html .= '<div class="ftp-form ftp-form-builder">';
+		$html .= '<div class="wpff-form wpff-form-builder">';
 			$html .= '<h2><div class="dashicons dashicons-admin-tools"></div> Form Builder</h2>';
-			$html .= '<ul id="ftp-row-list" class="ftp-list">';
+			$html .= '<ul id="wpff-row-list" class="wpff-list">';
 			if( !empty($this->_rows) ){
 				foreach($this->_rows as $row => $fields){
 					$count = count($fields);

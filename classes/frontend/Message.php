@@ -9,7 +9,7 @@ class Message {
 	*/
 	public static function make($message, $class = false)
 	{
-		return '<div class="ftp-return-message '.$class.'">'.$message.'</div>';
+		return '<div class="wpff-return-message '.$class.'">'.$message.'</div>';
 	}
 
 }

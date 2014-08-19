@@ -20,8 +20,8 @@ class Row {
 					$errs = $errors[ $field['id'] ];
 					
 					$html .= '<div class="'.$column.' columns">';
-					$html .= !empty($errs) ? '<div class="field ftp-field-error">' : '<div class="field">';
-						if( ! ftpisEmptyField($field) ) // Only continue if field isn't empty
+					$html .= !empty($errs) ? '<div class="field wpff-field-error">' : '<div class="field">';
+						if( ! wpffisEmptyField($field) ) // Only continue if field isn't empty
 						{
 							// Display label
 							if($options['labels'])
@@ -33,7 +33,7 @@ class Row {
 							// Display errors
 							if( !empty($errs) )
 							{
-								$html .= '<div class="ftp-field-errors-container">';
+								$html .= '<div class="wpff-field-errors-container">';
 								foreach($errs as $e){
 									$html .= '<p class="danger label">'.$e.'</p>';
 								}

@@ -16,8 +16,8 @@ Author URI: http://www.csrios.com
 /**
 * Define Constants
 */
-define( 'FTP_DIR', dirname(__FILE__) . '/' );
-define( 'FTP_URL', plugins_url('', __FILE__) );
+define( 'WPFF_DIR', dirname(__FILE__) . '/' );
+define( 'WPFF_URL', plugins_url('', __FILE__) );
 
 /**
 * Autoload classes for admin and frontend
@@ -27,9 +27,9 @@ spl_autoload_register(function($class){
 		return;
 
 	if(is_admin()){
-		$file = FTP_DIR . "classes/admin/$class.php";
+		$file = WPFF_DIR . "classes/admin/$class.php";
 	}else{
-		$file = FTP_DIR . "classes/frontend/$class.php";
+		$file = WPFF_DIR . "classes/frontend/$class.php";
 	}
 
 	if ( file_exists( $file ) )
@@ -39,6 +39,6 @@ spl_autoload_register(function($class){
 /**
 * Require necessary files
 */
-require_once FTP_DIR . '/includes/functions.php';
-require_once FTP_DIR . '/includes/post-types.php';
-require_once FTP_DIR . '/includes/actions.php';
+require_once WPFF_DIR . '/includes/functions.php';
+require_once WPFF_DIR . '/includes/post-types.php';
+require_once WPFF_DIR . '/includes/actions.php';

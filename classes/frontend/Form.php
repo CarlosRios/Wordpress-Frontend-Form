@@ -18,12 +18,12 @@ class Form {
 	public function __construct($id)
 	{
 		$this->id = $id;
-		$this->rows = get_post_meta($this->id, 'ftp_fields', true);
-		$this->options = get_post_meta($this->id, 'ftp_options', true);
+		$this->rows = get_post_meta($this->id, 'wpff_fields', true);
+		$this->options = get_post_meta($this->id, 'wpff_options', true);
 		$this->setFields();
 
 		if( $this->options['apply_styles'] == true ){
-			wp_enqueue_style('ftp-gumby');
+			wp_enqueue_style('wpff-gumby');
 		}
 	}
 
@@ -33,7 +33,7 @@ class Form {
 	*/
 	public function show()
 	{
-		if(isset($_POST['ftp-submit'])){
+		if(isset($_POST['wpff-submit'])){
 			return $this->processForm();
 		}else{
 			return $this->formHtml();
@@ -49,8 +49,8 @@ class Form {
 		if($message)
 			$html = Message::make($message, $message_class);
 
-		$html .= '<form id="ftp_form_'.$this->id.'" action="'.get_the_permalink().'" method="post">';
-		$html .= wp_nonce_field('ftp_nonce', 'ftp_nonce_field');
+		$html .= '<form id="wpff_form_'.$this->id.'" action="'.get_the_permalink().'" method="post">';
+		$html .= wp_nonce_field('wpff_nonce', 'wpff_nonce_field');
 		if( !empty($this->rows) )
 		{
 			foreach($this->rows as $row)
@@ -69,7 +69,7 @@ class Form {
 	*/
 	private function submitButton()
 	{
-		return '<div class="row"><input type="submit" name="ftp-submit" class="'.$this->options['button']['class'].'" value="'.$this->options['button']['text'].'"/></div>';
+		return '<div class="row"><input type="submit" name="wpff-submit" class="'.$this->options['button']['class'].'" value="'.$this->options['button']['text'].'"/></div>';
 	}
 
 	/**
@@ -116,7 +116,7 @@ class Form {
 		$this->setPostedValues();
 
 		// Verify nonce field.
-		if( !isset($_POST['ftp_nonce_field']) || !wp_verify_nonce($_POST['ftp_nonce_field'], 'ftp_nonce') ){
+		if( !isset($_POST['wpff_nonce_field']) || !wp_verify_nonce($_POST['wpff_nonce_field'], 'wpff_nonce') ){
 			return false;
 		}
 
@@ -127,10 +127,10 @@ class Form {
 		{
 			$this->createPost();
 			unset($_POST); // Remove posted values
-			return $this->formHtml('Thank you for your submission.', 'ftp-success success alert');
+			return $this->formHtml('Thank you for your submission.', 'wpff-success success alert');
 		}else
 		{
-			return $this->formHtml('Ooops, Looks like there were some errors.', 'ftp-errors danger alert');
+			return $this->formHtml('Ooops, Looks like there were some errors.', 'wpff-errors danger alert');
 		}
 	}
 
@@ -166,9 +166,9 @@ class Form {
 		}*/
 
 		// Store count as a transient for 2 days
-		$counts = get_transient( 'ftp_posts_count_' . $this->options['post_type'] );
+		$counts = get_transient( 'wpff_posts_count_' . $this->options['post_type'] );
 		$counts = $counts + 1;
-		set_transient( 'ftp_posts_count_' . $this->options['post_type'], $counts, 2 * DAY_IN_SECONDS );
+		set_transient( 'wpff_posts_count_' . $this->options['post_type'], $counts, 2 * DAY_IN_SECONDS );
 
 		return;
 	}

@@ -4,11 +4,11 @@
 * Shortcodes
 * @param array $atts
 */
-function get_ftp_form($atts){
+function get_wpff_form($atts){
 	$form = new Form($atts['id']);
 	return $form->show();
 }
-add_shortcode('ftp_form', 'get_ftp_form');
+add_shortcode('wpff_form', 'get_wpff_form');
 
 /**
 * Converts integer into word
@@ -51,7 +51,7 @@ function valueOrDefault( $value = null, $default )
 * @param array $field
 * @return bool
 */
-function ftpIsEmptyField($field)
+function wpffIsEmptyField($field)
 {
 	if( count($field) === 1 )
 		return true;
