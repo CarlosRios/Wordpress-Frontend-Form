@@ -55,21 +55,31 @@ if(is_admin())
 	*/
 	add_action( 'admin_menu', function(){
 		global $menu;
-		$count = ftpNewPostsCount('posts');
 
-		if( $count )
+		foreach($menu as $item => $value)
 		{
-			foreach( $menu as $key => $value )
+			// Check if menu item is a post type edit page.
+			$url = $menu[$item][2];
+			$url = explode('?', $url);
+
+			if( $url[0] == 'edit.php')
 			{
-				if( $menu[$key][2] == 'edit.php' )
+				if( ! $url[1] ) // Specifically for "post" post type
 				{
-					$menu[$key][0] .= " <span class='update-leads update-plugins count-$count'><span class='lead-count plugin-count'>" . number_format_i18n($count) . '</span></span>';
-					return;
+					$count = get_transient('ftp_posts_count_post');
+				}
+				else
+				{
+					$pt = str_replace('post_type=', '', $url[1]);
+					$count = get_transient('ftp_posts_count_' . $pt);
+				}
+
+				if( $count ){
+					$menu[$item][0] .= ' <span class="ftp-post-count update-plugins count-'.$count.'"><span class="plugin-count">'. number_format_i18n($count).'</span></span>';
 				}
 			}
 		}
 	});
-
 }
 
 /**

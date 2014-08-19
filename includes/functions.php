@@ -58,15 +58,3 @@ function ftpIsEmptyField($field)
 
 	return false;
 }
-
-/**
-* Returns the number of new posts that have been submitted through
-* the form for a specific post type
-* @param string $post_type
-* @return integer $count
-*/
-function ftpNewPostsCount($post_type)
-{
-
-	return 5;
-}
