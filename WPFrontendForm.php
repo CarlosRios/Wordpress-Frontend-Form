@@ -18,6 +18,7 @@ Author URI: http://www.csrios.com
 */
 define( 'WPFF_DIR', dirname(__FILE__) . '/' );
 define( 'WPFF_URL', plugins_url('', __FILE__) );
+define( 'WPFF_CURRENT_PAGE', basename($_SERVER['PHP_SELF']) );
 
 /**
 * Autoload classes for admin and frontend

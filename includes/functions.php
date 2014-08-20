@@ -58,3 +58,10 @@ function wpffIsEmptyField($field)
 
 	return false;
 }
+
+function wpffGetForms()
+{
+	global $wpdb;
+	$forms = $wpdb->get_results("SELECT ID, post_title FROM $wpdb->posts WHERE post_type='wpfrontendform' AND post_status='publish'", ARRAY_A);
+	return $forms;
+}

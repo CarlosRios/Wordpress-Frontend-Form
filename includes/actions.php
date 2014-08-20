@@ -80,6 +80,63 @@ if(is_admin())
 			}
 		}
 	});
+
+	/**
+	* Add Media Buttons
+	*/
+	add_action('media_buttons', function(){
+		$is_post_edit_page = in_array(WPFF_CURRENT_PAGE, ['post.php', 'page.php', 'page-new.php', 'post-new.php']);
+		if(!$is_post_edit_page)
+			return;
+
+		echo '<a id="wpff-add-form-button" href="#TB_inline?width=480&inlineId=wpff-select-form" class="button thickbox"><div class="dashicons dashicons-format-aside" style="font-size:17px; margin-top:5px;"></div> Add A Form</a>';
+	});
+	add_action('admin_footer', function(){
+		?>
+        <script>
+            function InsertWPFFForm(){
+                var form_id = jQuery("#add_form_id").val();
+                if(form_id == ""){
+                    alert("<?php _e("Please select a form", "wpff") ?>");
+                    return;
+                }
+                window.send_to_editor("[wpff_form id=\"" + form_id + "\"" + "]");
+            }
+        </script>
+
+        <div id="wpff-select-form" style="display:none;">
+            <div class="wrap">
+                <div>
+                    <div style="padding:15px 15px 0 15px;">
+                        <h3 style="color:#5A5A5A!important; font-family:Georgia,Times New Roman,Times,serif!important; font-size:1.8em!important; font-weight:normal!important;"><?php _e("Insert A Form", "wpff"); ?></h3>
+                        <span>
+                            <?php _e("Select a form below to add it to your post or page.", "wpff"); ?>
+                        </span>
+                    </div>
+                    <div style="padding:15px 15px 0 15px;">
+                    <?php //print_r( wpffGetForms() ); ?>
+                        <select id="add_form_id">
+                            <option value="">  <?php _e("Select a Form", "wpff"); ?>  </option>
+                            <?php
+                            	$forms = wpffGetForms();
+                                foreach($forms as $form){
+                                    ?>
+                                    <option value="<?php echo $form['ID']; ?>"><?php echo $form['post_title']; ?></option>
+                                    <?php
+                                }
+                            ?>
+                        </select> <br/>
+                        <div style="padding:8px 0 0 0; font-size:11px; font-style:italic; color:#5A5A5A"><?php _e("Can't find your form? Make sure it is published.", "wpff"); ?></div>
+                    </div>
+                    <div style="padding:15px;">
+                        <input type="button" class="button-primary" value="Insert Form" onclick="InsertWPFFForm();"/>&nbsp;&nbsp;&nbsp;
+                    <a class="button" style="color:#bbb;" href="#" onclick="tb_remove(); return false;"><?php _e("Cancel", "wpff"); ?></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+		<?php	
+	});
 }
 
 /**
