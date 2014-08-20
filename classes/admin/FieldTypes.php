@@ -85,6 +85,19 @@ class FieldTypes extends Field{
 		return $html;
 	}
 
+	public static function checkbox($field, $row)
+	{
+		$html = self::standardSettings($field, $row);
+		return $html;
+	}
+
+	public static function radio($field, $row)
+	{
+		$html = self::standardSettings($field, $row);
+		$html .= Input::text($field['id'] . '_options', 'wpff_fields['.$row.']['.$field['id'].'][options]', 'Field Options', $field['options'], '', 'Enter a comma separated list');
+		return $html;
+	}
+
 	public static function post_title($field, $row)
 	{
 		$html = self::postContentSettings($field, $row);
@@ -95,6 +108,11 @@ class FieldTypes extends Field{
 	{
 		$html = self::postContentSettings($field, $row);
 		return $html;
+	}
+
+	public static function upload($field, $row)
+	{
+		return 'Coming Soon!';
 	}
 
 }

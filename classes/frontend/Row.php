@@ -24,13 +24,15 @@ class Row {
 						if( ! wpffisEmptyField($field) ) // Only continue if field isn't empty
 						{
 							// Display label
-							if($options['labels'])
-								$html .= Field::getLabel($field);
+							if( $options['labels'] && $field['type'] != 'checkbox' )
+								$html .= '<label class="'.$field['type'].'" for="'.$field['id'].'">'.$field['label'].'</label>';
 
-							// Get field
-							$html .= Field::getField($field);
+							if( $field['desc'] )
+								$html .= '<p class="wpff-field-desc">'.$field['desc'].'</p>';
 
-							// Display errors
+							$html .= call_user_func([ 'Field', $field['type'] ], $field);
+
+							// Errors
 							if( !empty($errs) )
 							{
 								$html .= '<div class="wpff-field-errors-container">';

@@ -67,7 +67,7 @@ class Settings {
 			$html .= '<li>';
 
 				$fields = [
-					Input::checkbox('wpff-form-options-apply-styles', 'wpff_options[apply_styles]', 'Apply Form To Post Styles?', 1, $options['apply_styles'], 'If checked, it will apply the wpff styles to your form.'),
+					Input::checkbox('wpff-form-options-apply-styles', 'wpff_options[apply_styles]', 'Apply WordPress Frontend Form Styles?', 1, $options['apply_styles'], 'If checked, it will apply the wpff styles to your form.'),
 					Input::checkbox('wpff-form-options-labels', 'wpff_options[labels]', 'Show Field Labels?', 1, $options['labels'])
 				];
 				$html .= Input::createSettingsBlock('Display Settings', '', 'dashicons-format-aside', $fields);

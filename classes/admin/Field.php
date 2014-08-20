@@ -66,6 +66,7 @@ class Field {
 		$html .= '<h3>Field Settings</h3>';
 		$html .= Input::checkbox($field['id'] . '_required', 'wpff_fields['.$row.']['.$field['id'].'][required]', 'Required Field', true, $field['required'], 'Is this field requried?');
 		$html .= Input::text($field['id'] . '_label', 'wpff_fields['.$row.']['.$field['id'].'][label]', 'Field Label', $field['label']);
+		$html .= Input::text($field['id'] . '_desc', 'wpff_fields['.$row.']['.$field['id'].'][desc]', 'Description', $field['desc']);
 		$html .= Input::text($field['id'] . '_meta_key', 'wpff_fields['.$row.']['.$field['id'].'][meta_key]', 'Meta Key', $field['meta_key'], '', 'The id for the meta key that you would like to save to');
 
 		return $html;
