@@ -18,7 +18,10 @@ class Settings {
 	*/
 	private function formHtml()
 	{
-		$html = '<table class="widefat"><tbody><tr>';
+		$html = '<div class="wpff-use-shortcode">';
+		$html .= '<h2>To use this form simply use the shortcode: <span>[wpff id="'.$this->_postid.'"]</span></h2>';
+		$html .= '</div>';
+		$html .= '<table class="widefat"><tbody><tr>';
 			$html .= '<td class="wpff-padding-20">';
 				$html .= $this->getSettings();
 			$html .= '</td>';

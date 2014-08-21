@@ -205,6 +205,19 @@ li.wpff-list-item div > ul.tiles > li{
 .wpff-form h2 > .dashicons{
 	line-height: 30px;
 }
+.wpff-use-shortcode{
+	padding: 20px;
+	background: #FCF6ED;
+	text-align: center;
+}
+.wpff-use-shortcode h2{
+	padding: 0 !important;
+	margin: 0 !important;
+	color: #6F625A;
+}
+.wpff-use-shortcode h2 span{
+	font-weight: 700;
+}
 
 /* Form Builder */
 .wpff-form-builder{
@@ -267,4 +280,14 @@ table td.wpff-padding-20{
 }
 .wpff-active-tab{
 	background: #f1f1f1;
+}
+
+/* Custom Columns */
+.wpff-form-id{
+	color: #999;
+}
+.wpff-column-dashicon{
+	font-size: 15px;
+	color: #666;
+	margin: 3px 3px 0 0;
 }

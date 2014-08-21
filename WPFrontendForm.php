@@ -42,4 +42,5 @@ spl_autoload_register(function($class){
 */
 require_once WPFF_DIR . '/includes/functions.php';
 require_once WPFF_DIR . '/includes/post-types.php';
+require_once WPFF_DIR . '/includes/post-type-columns.php';
 require_once WPFF_DIR . '/includes/actions.php';
