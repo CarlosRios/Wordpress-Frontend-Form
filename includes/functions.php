@@ -11,6 +11,16 @@ function get_wpff_form($atts){
 add_shortcode('wpff_form', 'get_wpff_form');
 
 /**
+* Returns a form for use in a plugin or theme
+* @param integer $id
+*/
+function get_wpff($id)
+{
+	$form = new Form($id);
+	return $form->show();
+}
+
+/**
 * Converts integer into word
 * @param integer $number
 */

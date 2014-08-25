@@ -6,11 +6,11 @@
 */
 /*
 Plugin Name: WordPress Frontend Form
-Plugin URI: http://www.csrios.com
+Plugin URI: http://www.lavabucket.co
 Description: Creates a form that is used to populate a post type with custom meta keys.
 Author: Carlos Rios
 Version: 0.2
-Author URI: http://www.csrios.com
+Author URI: http://www.lavabucket.co
 */
 
 /**
@@ -19,6 +19,7 @@ Author URI: http://www.csrios.com
 define( 'WPFF_DIR', dirname(__FILE__) . '/' );
 define( 'WPFF_URL', plugins_url('', __FILE__) );
 define( 'WPFF_CURRENT_PAGE', basename($_SERVER['PHP_SELF']) );
+define( 'WP_DEBUG', true ); // Set to false in development
 
 /**
 * Autoload classes for admin and frontend

@@ -171,7 +171,7 @@ class Form {
 		// Store count as a transient for 2 days
 		$counts = get_transient( 'wpff_posts_count_' . $this->options['post_type'] );
 		$counts = $counts + 1;
-		set_transient( 'wpff_posts_count_' . $this->options['post_type'], $counts, 2 * DAY_IN_SECONDS );
+		set_transient( 'wpff_posts_count_' . $this->options['post_type'], $counts, 1 * HOUR_IN_SECONDS );
 
 		return;
 	}
