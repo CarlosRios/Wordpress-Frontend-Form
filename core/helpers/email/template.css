@@ -85,8 +85,10 @@ table.footer-wrap { width: 100%;  clear:both!important;
 }
 .footer-wrap .container td.content  p { border-top: 1px solid rgb(215,215,215); padding-top:15px;}
 .footer-wrap .container td.content p {
-  font-size:7px;
   font-weight: bold;
+}
+.footer-wrap p{
+  font-size: 12px;
 }
 .footer-wrap p.desc{
   color: #999;
@@ -97,7 +99,7 @@ table.footer-wrap { width: 100%;  clear:both!important;
     TYPOGRAPHY 
 ------------------------------------- */
 h1,h2,h3,h4,h5,h6 {
-font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; line-height: 1.1; margin-bottom:25px; color:#000; padding:10px 0 25px; border-bottom: 1px dashed #E0E0E0;
+font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; line-height: 1.1; margin-bottom:25px; color:#000; padding:10px 0 25px; border-bottom: 1px solid #eaeaea;
 }
 h1 small, h2 small, h3 small, h4 small, h5 small, h6 small { font-size: 60%; color: #6f6f6f; line-height: 0; text-transform: none; }
 
