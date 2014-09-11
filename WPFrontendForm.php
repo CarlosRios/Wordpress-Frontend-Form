@@ -6,11 +6,11 @@
 */
 /*
 Plugin Name: WordPress Frontend Form
-Plugin URI: http://www.lavabucket.co
+Plugin URI: http://wpfrontendforms.lavabucket.co
 Description: Creates a form that is used to populate a post type with custom meta keys.
 Author: Carlos Rios
-Version: 0.2
-Author URI: http://www.lavabucket.co
+Version: 0.3
+Author URI: http://wpfrontendforms.lavabucket.co
 */
 
 /**
@@ -22,26 +22,14 @@ define( 'WPFF_CURRENT_PAGE', basename($_SERVER['PHP_SELF']) );
 define( 'WP_DEBUG', true ); // Set to false in development
 
 /**
-* Autoload classes for admin and frontend
+* Load Required Files.
 */
-spl_autoload_register(function($class){
-	if ( class_exists( $class, false ) )
-		return;
-
-	if(is_admin()){
-		$file = WPFF_DIR . "classes/admin/$class.php";
-	}else{
-		$file = WPFF_DIR . "classes/frontend/$class.php";
-	}
-
-	if ( file_exists( $file ) )
-		require_once( $file );
-});
+require_once WPFF_DIR . 'core/autoload.php';
 
 /**
 * Require necessary files
 */
-require_once WPFF_DIR . '/includes/functions.php';
-require_once WPFF_DIR . '/includes/post-types.php';
-require_once WPFF_DIR . '/includes/post-type-columns.php';
-require_once WPFF_DIR . '/includes/actions.php';
+require_once WPFF_DIR . 'includes/wpff_functions.php';
+require_once WPFF_DIR . 'includes/wpff_post_types.php';
+require_once WPFF_DIR . 'includes/wpff_post_type_columns.php';
+require_once WPFF_DIR . 'includes/wpff_actions.php';

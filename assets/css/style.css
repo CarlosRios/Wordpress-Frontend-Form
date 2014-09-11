@@ -1,4 +1,6 @@
-/* General Styles */
+/* ===========================================================================================
+1. WPFF Alignment  ---------------------------------------------------------------------------
+============================================================================================== */
 .wpff-left{
 	float:left;
 }
@@ -9,7 +11,9 @@
 	clear:both;
 }
 
-/* Buttons */
+/* ===========================================================================================
+2. Buttons  ----------------------------------------------------------------------------------
+============================================================================================== */
 .wpff-remove-field-button{
 	border-radius: 0 3px 3px 0 !important;
 	-webkit-border-radius: 0 3px 3px 0 !important;
@@ -24,7 +28,9 @@
 	margin-top: 4px;
 }
 
-/* Field List Styling */
+/* ===========================================================================================
+3. Field List Styling  -----------------------------------------------------------------------
+============================================================================================== */
 .wpff-list{
 	display:block;
 	margin-bottom: 1em;
@@ -179,15 +185,25 @@ li.wpff-list-item div > ul.tiles > li{
 }
 
 /* Modal */
-.wpff-field-modal{
+.wpff-modal{
 	padding: 20px;
 }
-.wpff-field-modal > .wpff-input-wrapper{
+.wpff-modal > .wpff-input-wrapper{
 	margin-bottom: 10px;
 }
-.wpff-field-modal > .wpff-input-wrapper > label{
+.wpff-modal > .wpff-input-wrapper > label{
 	display: block;
 	margin-bottom: 5px;
+}
+.wpff-modal #TB_title{
+	height: auto;
+}
+.wpff-modal #TB_ajaxWindowTitle{
+	padding: 20px;
+}
+.wpff-modal .tb-close-icon{
+	top: 10px;
+	right: 10px;
 }
 
 /* Settings */
