@@ -24,7 +24,7 @@ class Form {
 		$this->setFields();
 
 		if( $this->options['apply_styles'] == true ){
-			wp_enqueue_style('wpff-gumby');
+			//wp_enqueue_style('wpff-gumby');
 		}
 	}
 
@@ -166,6 +166,13 @@ class Form {
 			}
 		}
 
+		// Add meta key to help with post count.
+		add_post_meta( $post_id, 'wpff_created_post', $this->options['post_type'] );
+
+		// Update count transient
+		$counts = get_transient( 'wpff_count_' . $this->options['post_type'] );
+		set_transient( 'wpff_count_' . $this->options['post_type'], $counts + 1, 0 );
+
 		// Send email
 		if($this->options['email_on'] == true){
 			$data = array();
@@ -181,11 +188,6 @@ class Form {
 		/*foreach ($this->gather_terms() as $tax => $term){
 			wp_set_post_terms($new_id, $term, $tax);
 		}*/
-
-		// Store count as a transient for 2 days
-		$counts = get_transient( 'wpff_posts_count_' . $this->options['post_type'] );
-		$counts = $counts + 1;
-		set_transient( 'wpff_posts_count_' . $this->options['post_type'], $counts, 1 * HOUR_IN_SECONDS );
 
 		return;
 	}

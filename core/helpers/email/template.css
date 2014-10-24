@@ -88,7 +88,7 @@ table.footer-wrap { width: 100%;  clear:both!important;
   font-weight: bold;
 }
 .footer-wrap p{
-  font-size: 12px;
+  font-size: 12px !important;
 }
 .footer-wrap p.desc{
   color: #999;

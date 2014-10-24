@@ -1,9 +1,4 @@
 <?php
-/**
-* @package WordPress Frontend Form
-* @author Carlos Rios
-* @version 0.2
-*/
 /*
 Plugin Name: WordPress Frontend Form
 Plugin URI: http://wpfrontendforms.lavabucket.co

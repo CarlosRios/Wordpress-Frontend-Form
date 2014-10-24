@@ -79,12 +79,12 @@ add_action( 'admin_menu', function(){
 		{
 			if( ! $url[1] ) // Specifically for "post" post type
 			{
-				$count = get_transient('wpff_posts_count_post');
+				$count = get_transient('wpff_count_post');
 			}
 			else
 			{
 				$pt = str_replace('post_type=', '', $url[1]);
-				$count = get_transient('wpff_posts_count_' . $pt);
+				$count = get_transient('wpff_count_' . $pt);
 			}
 
 			if( $count ){
@@ -127,7 +127,6 @@ add_action('admin_footer', function(){
                     </span>
                 </div>
                 <div style="padding:15px 15px 0 15px;">
-                <?php //print_r( wpffGetForms() ); ?>
                     <select id="add_form_id">
                         <option value="">  <?php _e("Select a Form", "wpff"); ?>  </option>
                         <?php
@@ -150,6 +149,15 @@ add_action('admin_footer', function(){
     </div>
 	<?php	
 });
+add_action(  'pending_to_publish', function( $post ){
+	$wpff = get_post_meta($post->ID, 'wpff_created_post', true);
+	if( !empty($wpff) ){
+		$count = get_transient('wpff_count_' . $wpff);
+		if( $count != 0 ){
+			set_transient( 'wpff_count_' . $wpff, $count - 1, 0 );
+		}
+	}
+}, 10, 1 );
 
 /**
 * Frontend Scripts & Styles

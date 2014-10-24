@@ -37,8 +37,11 @@ class Field {
 	* @param string $id
 	* @param string $type
 	*/
-	private static function createNewField($id, $type){
-		return ['id' => $id, 'label' => ucfirst($type) . ' Field' , 'type' => $type ];
+	private static function createNewField($id, $type)
+	{
+		$label = str_replace('_', ' ', $type);
+		$label = ucwords($label);
+		return ['id' => $id, 'label' => $label . ' Field' , 'type' => $type ];
 	}
 
 	/**

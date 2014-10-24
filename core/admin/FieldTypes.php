@@ -9,9 +9,9 @@ class FieldTypes extends Field {
 	protected static $_fields_post = [
 		'post_title'		=> 'Title',
 		'post_content'		=> 'Content',
-		'categories'		=> 'Categories',
+		/*'categories'		=> 'Categories',
 		'tags'				=> 'Tags',
-		'featured_image'	=> 'Featured Image'
+		'featured_image'	=> 'Featured Image'*/
 	];
 
 	private static $_fields_basic = [
@@ -116,6 +116,7 @@ class FieldTypes extends Field {
 
 	public static function upload($field, $row)
 	{
+		
 		return;
 	}
 

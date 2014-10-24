@@ -87,7 +87,7 @@ class Settings {
 						<div class="six columns">
 							<?php
 							$fields = [
-								Input::checkbox('wpff-form-options-apply-styles', 'wpff_options[apply_styles]', 'Apply WordPress Frontend Form Styles?', 1, $options['apply_styles'], 'If checked, it will apply the wpff styles to your form.'),
+								/*Input::checkbox('wpff-form-options-apply-styles', 'wpff_options[apply_styles]', 'Apply WordPress Frontend Form Styles?', 1, $options['apply_styles'], 'If checked, it will apply the wpff styles to your form.'),*/
 								Input::checkbox('wpff-form-options-labels', 'wpff_options[labels]', 'Show Field Labels?', 1, $options['labels'])
 							];
 							echo Input::createSettingsBlock('Display Settings', '', 'dashicons-format-aside', $fields);

@@ -9,7 +9,6 @@ if( is_admin() ){
 	require_once WPFF_DIR . 'core/admin/Field.php';
 	require_once WPFF_DIR . 'core/admin/FieldTypes.php';
 	require_once WPFF_DIR . 'core/admin/Input.php';
-	require_once WPFF_DIR . 'core/admin/Notifications.php';
 	require_once WPFF_DIR . 'core/admin/Row.php';
 	require_once WPFF_DIR . 'core/admin/Ajax.php';
 }else{
