@@ -1,9 +1,25 @@
 <?php
+
 /**
-* Unfortunately there is no way to get around this in WordPress.
-* Require necessary files below.
-*/
-if( is_admin() ){
+ * Files needed reguardless
+ */
+require_once WPFF_DIR . 'core/includes/functions.php';
+require_once WPFF_DIR . 'core/includes/post-types.php';
+
+/**
+ * Require admin files
+ */
+if( is_admin() )
+{
+	/**
+	 * Includes
+	 */
+	require_once WPFF_DIR . 'core/includes/admin/actions.php';
+	require_once WPFF_DIR . 'core/includes/admin/filters.php';
+
+	/**
+	 * Classes
+	 */
 	require_once WPFF_DIR . 'core/admin/Settings.php';
 	require_once WPFF_DIR . 'core/admin/FormBuilder.php';
 	require_once WPFF_DIR . 'core/admin/Field.php';
@@ -11,7 +27,22 @@ if( is_admin() ){
 	require_once WPFF_DIR . 'core/admin/Input.php';
 	require_once WPFF_DIR . 'core/admin/Row.php';
 	require_once WPFF_DIR . 'core/admin/Ajax.php';
-}else{
+}
+
+/**
+ * Require frontend files
+ */
+else
+{
+	/**
+	 * Includes
+	 */
+	require_once WPFF_DIR . 'core/includes/frontend/actions.php';
+	require_once WPFF_DIR . 'core/includes/frontend/filters.php';
+
+	/**
+	 * Classes
+	 */
 	require_once WPFF_DIR . 'core/frontend/Form.php';
 	require_once WPFF_DIR . 'core/frontend/Field.php';
 	require_once WPFF_DIR . 'core/frontend/Message.php';

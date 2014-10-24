@@ -2,3 +2,4 @@
 package.json
 GruntFile.js
 /node_modules
+/.sass-cache
