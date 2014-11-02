@@ -4,17 +4,17 @@ namespace WPFF\Frontend;
 class Field {
 
 	/**
-	* Returns data that has been posted
-	* @param string $field_id
-	*/
+	 * Returns data that has been posted
+	 * @param string $field_id
+	 */
 	private static function postedData($field_id)
 	{
 		return isset($_POST[$field_id]) ? $_POST[$field_id] : '';
 	}
 
 	/**
-	* Basic Fieldset
-	* Description: These are all of the basic html5 fields
+	 * Basic Fieldset
+	 * Description: These are all of the basic html5 fields
 	*/
 	public static function text($field)
 	{
@@ -83,10 +83,10 @@ class Field {
 	}
 
 	/**
-	* Post Items Fieldset
-	* Description: These are the fields that are used specifically for post
-	* creation. They're all WordPress related fields.
-	*/
+	 * Post Items Fieldset
+	 * Description: These are the fields that are used specifically for post
+	 * creation. They're all WordPress related fields.
+	 */
 	public static function post_title($field)
 	{
 		$html = '<input id="'.$field['id'].'" class="input" name="'.$field['id'].'" type="text" placeholder="'.$field['placeholder'].'" value="'.self::postedData($field['id']).'">';
@@ -100,9 +100,9 @@ class Field {
 	}
 
 	/**
-	* Advanced Fieldset
-	* Description: These are fields that are more advanced.
-	*/
+	 * Advanced Fieldset
+	 * Description: These are fields that are more advanced.
+	 */
 	public static function upload($field)
 	{
 		return 'Coming Soon!';

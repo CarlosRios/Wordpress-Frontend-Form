@@ -4,11 +4,11 @@ namespace WPFF\Admin;
 class Row {
 
 	/**
-	* Creates a row
-	* @param integer $columns
-	* @param string $row_id
-	* @param array $fields
-	*/
+	 * Creates a row
+	 * @param integer $columns
+	 * @param string $row_id
+	 * @param array $fields
+	 */
 	public static function create($columns, $row_id = false, $fields = false)
 	{
 		$columnwidth = 12 / $columns;
@@ -52,9 +52,9 @@ class Row {
 	}
 
 	/**
-	* Generates a random id for a new row
-	* @param string $prefix
-	*/
+	 * Generates a random id for a new row
+	 * @param string $prefix
+	 */
 	private static function newID($prefix)
 	{
 		return $prefix . uniqid();

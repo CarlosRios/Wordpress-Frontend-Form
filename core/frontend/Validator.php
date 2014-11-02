@@ -7,10 +7,10 @@ class Validator {
 			$fields;
 
 	/**
-	* Sets the posted data and the field data globally for the instance
-	* @param array $data
-	* @param array $fields
-	*/
+	 * Sets the posted data and the field data globally for the instance
+	 * @param array $data
+	 * @param array $fields
+	 */
 	public function __construct($data, $fields)
 	{
 		
@@ -19,9 +19,9 @@ class Validator {
 	}
 
 	/**
-	* Checks if the fields in the current instance are valid
-	* @return $errors or true if valid
-	*/
+	 * Checks if the fields in the current instance are valid
+	 * @return $errors or true if valid
+	 */
 	public function isValid()
 	{
 		$errors = [];

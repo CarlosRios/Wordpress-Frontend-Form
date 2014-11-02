@@ -7,9 +7,9 @@ class FormBuilder {
 			$_rows;
 
 	/**
-	* Sets the id, rows, and returns get
-	* @return get()
-	*/
+	 * Sets the id, rows, and returns get
+	 * @return get()
+	 */
 	public function __construct()
 	{
 		$this->_postid = get_the_ID();
@@ -18,8 +18,8 @@ class FormBuilder {
 	}
 
 	/**
-	* Sets the rows
-	*/
+	 * Sets the rows
+	 */
 	private function setRows()
 	{
 		$this->_rows = get_post_meta($this->_postid, 'wpff_fields', true);
@@ -27,8 +27,8 @@ class FormBuilder {
 	}
 
 	/**
-	* Echos the form builder
-	*/
+	 * Echos the form builder
+	 */
 	private function get()
 	{	
 		$html = '<table class="widefat"><tbody><tr>';
@@ -42,8 +42,8 @@ class FormBuilder {
 	}
 
 	/**
-	* Returns the sidebar form for admin form
-	*/
+	 * Returns the sidebar form for admin form
+	 */
 	private function sidebar()
 	{
 		$html = '<div class="wpff-form">';
@@ -69,8 +69,8 @@ class FormBuilder {
 	}
 
 	/**
-	* Returns html for the form builder
-	*/
+	 * Returns html for the form builder
+	 */
 	private function builderArea()
 	{
 		$html .= '<div class="wpff-form wpff-form-builder">';

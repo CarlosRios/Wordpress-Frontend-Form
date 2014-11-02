@@ -4,8 +4,8 @@ namespace WPFF\Admin;
 class Ajax {
 
 	/**
-	* Returns new field item to the DOM
-	*/
+	 * Returns new field item to the DOM
+	 */
 	public static function createNewField()
 	{
 		echo Field::createFieldItem($_POST['row'], $_POST['type'], false, $_POST['id']);
@@ -13,8 +13,8 @@ class Ajax {
 	}
 
 	/**
-	* Returns new row to the DOM
-	*/
+	 * Returns new row to the DOM
+	 */
 	public static function createNewRow()
 	{
 		echo Row::create($_POST['columns']);
@@ -22,8 +22,8 @@ class Ajax {
 	}
 
 	/**
-	* Loads the page for the field types
-	*/
+	 * Loads the page for the field types
+	 */
 	public static function loadFieldTypesPage()
 	{
 		echo FieldTypes::getTypeItems($_POST['page']);

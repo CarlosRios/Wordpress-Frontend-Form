@@ -4,11 +4,11 @@ namespace WPFF\Frontend;
 class Row {
 
 	/**
-	* Creates a row with all of the fields and displays errors
-	* @param array $fields
-	* @param array $options
-	* @param array $errors
-	*/
+	 * Creates a row with all of the fields and displays errors
+	 * @param array $fields
+	 * @param array $options
+	 * @param array $errors
+	 */
 	public static function create($fields, $options, $errors = false)
 	{
 		$html .= '<div class="row">';

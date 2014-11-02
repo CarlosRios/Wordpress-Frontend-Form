@@ -9,14 +9,14 @@ Author URI: http://wpfrontendforms.lavabucket.co
 */
 
 /**
-* Define Constants
-*/
+ * Define Constants
+ */
 define( 'WPFF_DIR', dirname(__FILE__) . '/' );
 define( 'WPFF_URL', plugins_url('', __FILE__) );
 define( 'WPFF_CURRENT_PAGE', basename($_SERVER['PHP_SELF']) );
 define( 'WP_DEBUG', false );
 
 /**
-* Require Autoload Files
-*/
+ * Require Autoload Files
+ */
 require_once WPFF_DIR . 'core/autoload.php';

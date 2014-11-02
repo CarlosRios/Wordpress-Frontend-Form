@@ -6,17 +6,17 @@ class Settings {
 	private $_postid;
 
 	/**
-	* Sets the id, and returns form
-	* @return formHtml()
-	*/
+	 * Sets the id, and returns form
+	 * @return formHtml()
+	 */
 	public function __construct(){
 		$this->_postid = get_the_ID();
 		$this->formHtml();
 	}
 
 	/**
-	* echo the form html
-	*/
+	 * echo the form html
+	 */
 	private function formHtml()
 	{?>
 		<div class="wpff-use-shortcode">
@@ -35,8 +35,8 @@ class Settings {
 	}
 
 	/**
-	* Returns the sidebar form for admin form
-	*/
+	 * Returns the sidebar form for admin form
+	 */
 	private function getSettings()
 	{
 		// Gather post types in array

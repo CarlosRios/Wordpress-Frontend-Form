@@ -4,8 +4,8 @@ namespace WPFF\Admin;
 class FieldTypes extends Field {
 
 	/**
-	* All field types must be placed here and have a corresponding static function
-	*/
+	 * All field types must be placed here and have a corresponding static function
+	 */
 	protected static $_fields_post = [
 		'post_title'		=> 'Title',
 		'post_content'		=> 'Content',
@@ -29,8 +29,8 @@ class FieldTypes extends Field {
 	];
 
 	/**
-	* Returns formatted html list for all the field types
-	*/
+	 * Returns formatted html list for all the field types
+	 */
 	public static function getTypeItems($page = 'post')
 	{	
 		switch($page){

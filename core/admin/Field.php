@@ -4,12 +4,12 @@ namespace WPFF\Admin;
 class Field {
 
 	/**
-	* Creates a new field item
-	* @param array $row
-	* @param string $type
-	* @param array $field
-	* @param string $newid
-	*/
+	 * Creates a new field item
+	 * @param array $row
+	 * @param string $type
+	 * @param array $field
+	 * @param string $newid
+	 */
 	public static function createFieldItem($row, $type, $field, $newid = false)
 	{
 		if( !$field )
@@ -33,10 +33,10 @@ class Field {
 	}
 
 	/**
-	* Creates a new field
-	* @param string $id
-	* @param string $type
-	*/
+	 * Creates a new field
+	 * @param string $id
+	 * @param string $type
+	 */
 	private static function createNewField($id, $type)
 	{
 		$label = str_replace('_', ' ', $type);
@@ -45,10 +45,10 @@ class Field {
 	}
 
 	/**
-	* Returns the field's modal
-	* @param array $field
-	* @param array $row
-	*/
+	 * Returns the field's modal
+	 * @param array $field
+	 * @param array $row
+	 */
 	public static function fieldModal($field, $row)
 	{
 		$modal = '<div id="'.$field['id'].'_modal" style="display:none;">';
@@ -61,10 +61,10 @@ class Field {
 	}
 
 	/**
-	* Standard settings that can be used in every field
-	* @param array $field
-	* @param array $row
-	*/
+	 * Standard settings that can be used in every field
+	 * @param array $field
+	 * @param array $row
+	 */
 	protected static function standardSettings($field, $row)
 	{
 		$html = add_thickbox();
@@ -81,10 +81,10 @@ class Field {
 	}
 
 	/**
-	* Like standard settings but used for basic post things like title, slug, content, etc
-	* @param array $field
-	* @param array $row
-	*/
+	 * Like standard settings but used for basic post things like title, slug, content, etc
+	 * @param array $field
+	 * @param array $row
+	 */
 	protected static function postContentSettings($field, $row)
 	{
 		$html = add_thickbox();
@@ -99,10 +99,10 @@ class Field {
 	}
 
 	/**
-	* Separated from settings because not all fields have a placeholder
-	* @param array $field
-	* @param array $row
-	*/
+	 * Separated from settings because not all fields have a placeholder
+	 * @param array $field
+	 * @param array $row
+	 */
 	protected static function placeholder($field, $row)
 	{	
 		return Input::text('wpff-field-'.$field['id'].'-placeholder', 'wpff_fields['.$row.']['.$field['id'].'][placeholder]', 'Placeholder', $field['placeholder']);

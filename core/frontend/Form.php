@@ -13,9 +13,9 @@ class Form {
 		    $errors;
 
 	/**
-	* Sets the form's id, rows, options, and fields globally for the instance.
-	* @param integer $id
-	*/
+	 * Sets the form's id, rows, options, and fields globally for the instance.
+	 * @param integer $id
+	 */
 	public function __construct($id)
 	{
 		$this->id = $id;
@@ -29,9 +29,9 @@ class Form {
 	}
 
 	/**
-	* Gets a form by id
-	* @param integer $id
-	*/
+	 * Gets a form by id
+	 * @param integer $id
+	 */
 	public function show()
 	{
 		if(isset($_POST['wpff-submit'])){
@@ -42,8 +42,8 @@ class Form {
 	}
 
 	/**
-	* Renders the form's html
-	*/
+	 * Renders the form's html
+	 */
 	private function formHtml($message = false, $message_class = false)
 	{
 		
@@ -65,17 +65,17 @@ class Form {
 	}
 
 	/**
-	* Gets the submit button details
-	* @param array $button
-	*/
+	 * Gets the submit button details
+	 * @param array $button
+	 */
 	private function submitButton()
 	{
 		return '<div class="row"><input type="submit" name="wpff-submit" class="'.$this->options['button']['class'].'" value="'.$this->options['button']['text'].'"/></div>';
 	}
 
 	/**
-	* Sets the fields globally in the instance
-	*/
+	 * Sets the fields globally in the instance
+	 */
 	private function setFields()
 	{
 		foreach($this->rows as $row => $fields)
@@ -98,8 +98,8 @@ class Form {
 	}
 
 	/**
-	* Sets the posted values globally in current instance
-	*/
+	 * Sets the posted values globally in current instance
+	 */
 	private function setPostedValues()
 	{
 		foreach($this->fields as $field)
@@ -110,8 +110,8 @@ class Form {
 	}
 
 	/**
-	* Processes the form and returns message with form.
-	*/
+	 * Processes the form and returns message with form.
+	 */
 	private function processForm()
 	{
 		$this->setPostedValues();
@@ -139,17 +139,17 @@ class Form {
 	}
 
 	/**
-	* Gets the field's meta value
-	* @param string $field_id
-	*/
+	 * Gets the field's meta value
+	 * @param string $field_id
+	 */
 	private function getFieldMetaKey($field_id)
 	{
 		return $this->fields[$field_id]['meta_key'];
 	}
 
 	/**
-	* Creates the new post with all of the settings
-	*/
+	 * Creates the new post with all of the settings
+	 */
 	private function createPost()
 	{
 		$post_id = wp_insert_post([

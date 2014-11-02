@@ -4,9 +4,9 @@ namespace WPFF\Frontend;
 class Notifications {
 
 	/**
-	* Sends an email to notify the author of a new submission.
-	* @param string $to
-	*/
+	 * Sends an email to notify the author of a new submission.
+	 * @param string $to
+	 */
 	public static function sendEmail($to, $data = null)
 	{
 		require_once WPFF_DIR . 'core/helpers/EmailTemplateMaker.php';

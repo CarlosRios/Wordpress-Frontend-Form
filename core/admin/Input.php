@@ -2,8 +2,8 @@
 namespace WPFF\Admin;
 
 /**
-* Is used to generate all of the input types in the admin form
-*/
+ * Is used to generate all of the input types in the admin form
+ */
 class Input{
 
 	private static function wrapperStart()
@@ -17,11 +17,11 @@ class Input{
 	}
 
 	/**
-	* Creates a settings block.
-	* @param string $title
-	* @param string $icon
-	* @param array $fields;
-	*/
+	 * Creates a settings block.
+	 * @param string $title
+	 * @param string $icon
+	 * @param array $fields;
+	 */
 	public static function createSettingsBlock($title, $desc = false, $icon, $fields, $settings_container = false, $extra = false)
 	{
 		$html .= '<h2><div class="dashicons '.$icon.'"></div> '.$title.'</h2>';
@@ -93,13 +93,13 @@ class Input{
 	}
 
 	/**
-	* Render the multicheck
-	* @param integer $id
-	* @param string $name
-	* @param array $options
-	* @param array $checked
-	* @param string $desc
-	*/
+	 * Render the multicheck
+	 * @param integer $id
+	 * @param string $name
+	 * @param array $options
+	 * @param array $checked
+	 * @param string $desc
+	 */
 	public static function multicheck($id, $name, $label, $options, $checked, $desc = false)
 	{
 		$check = self::wrapperStart();

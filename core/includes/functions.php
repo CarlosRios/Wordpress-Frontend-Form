@@ -2,9 +2,9 @@
 use WPFF\Frontend\Form;
 
 /**
-* Shortcodes
-* @param array $atts
-*/
+ * Shortcodes
+ * @param array $atts
+ */
 function get_wpff_form($atts){
 	$form = new Form($atts['id']);
 	echo $form->show();
@@ -12,9 +12,9 @@ function get_wpff_form($atts){
 add_shortcode('wpff', 'get_wpff_form');
 
 /**
-* Returns a form for use in a plugin or theme
-* @param integer $id
-*/
+ * Returns a form for use in a plugin or theme
+ * @param integer $id
+ */
 function get_wpff($id)
 {
 	$form = new Form($id);
@@ -22,10 +22,10 @@ function get_wpff($id)
 }
 
 /**
-* Checks if value is set and returns value or default it isn't set
-* @param string $value
-* @param string $default
-*/
+ * Checks if value is set and returns value or default it isn't set
+ * @param string $value
+ * @param string $default
+ */
 function valueOrDefault( $value = null, $default )
 {
 	if(!is_null($value) && $value != ''){
@@ -35,10 +35,10 @@ function valueOrDefault( $value = null, $default )
 }
 
 /**
-* Checks if field is blank
-* @param array $field
-* @return bool
-*/
+ * Checks if field is blank
+ * @param array $field
+ * @return bool
+ */
 function wpffIsEmptyField($field)
 {
 	if( count($field) === 2 )
@@ -55,17 +55,17 @@ function wpffGetForms()
 }
 
 /**
-* Returns a random ID
-*/
+ * Returns a random ID
+ */
 function wpffNewID( $prefix )
 {
 	return $prefix . uniqid();
 }
 
 /**
-* Converts integer into word
-* @param integer $number
-*/
+ * Converts integer into word
+ * @param integer $number
+ */
 function numberToWord($number)
 {
 	$numbers = array(
