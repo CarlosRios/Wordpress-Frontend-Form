@@ -17,6 +17,9 @@ define( 'WPFF_CURRENT_PAGE', basename($_SERVER['PHP_SELF']) );
 define( 'WP_DEBUG', false );
 
 /**
-* Require Autoload File.
+* Require Autoload Files
 */
+if ( file_exists( WPFF_DIR . 'vendor/autoload.php' ) )
+	require_once WPFF_DIR . 'vendor/autoload.php';
+
 require_once WPFF_DIR . 'core/autoload.php';

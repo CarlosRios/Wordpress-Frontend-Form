@@ -1,5 +1,5 @@
 <?php
-use WPFF\Core\Frontend\Form;
+use WPFF\Frontend\Form;
 
 /**
 * Shortcodes

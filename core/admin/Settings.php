@@ -1,5 +1,5 @@
 <?php
-namespace WPFF\Core\Admin;
+namespace WPFF\Admin;
 
 class Settings {
 

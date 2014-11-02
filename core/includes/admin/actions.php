@@ -1,7 +1,7 @@
 <?php
-use WPFF\Core\Admin\FormBuilder;
-use WPFF\Core\Admin\Settings;
-use WPFF\Core\Admin\Ajax;
+use WPFF\Admin\FormBuilder;
+use WPFF\Admin\Settings;
+use WPFF\Admin\Ajax;
 
 /**
  * Scripts & Styles

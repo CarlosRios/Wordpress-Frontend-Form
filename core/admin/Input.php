@@ -1,5 +1,5 @@
 <?php
-namespace WPFF\Core\Admin;
+namespace WPFF\Admin;
 
 /**
 * Is used to generate all of the input types in the admin form

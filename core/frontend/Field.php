@@ -1,5 +1,5 @@
 <?php
-namespace WPFF\Core\Frontend;
+namespace WPFF\Frontend;
 
 class Field {
 
