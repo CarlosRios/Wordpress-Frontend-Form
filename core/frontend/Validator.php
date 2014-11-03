@@ -13,7 +13,6 @@ class Validator {
 	 */
 	public function __construct($data, $fields)
 	{
-		
 		$this->data = $data;
 		$this->fields = $fields;	
 	}

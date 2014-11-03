@@ -1,6 +1,11 @@
 <?php
 
 /**
+ * Include needed libraries
+ */
+require_once WPFF_DIR . 'core/lib/Colony/Colony.php';
+
+/**
  * Files needed reguardless
  */
 require_once WPFF_DIR . 'core/includes/functions.php';

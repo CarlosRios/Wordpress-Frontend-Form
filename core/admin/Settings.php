@@ -1,6 +1,8 @@
 <?php
 namespace WPFF\Admin;
 
+use Colony\Form;
+
 class Settings {
 
 	private $_postid;
