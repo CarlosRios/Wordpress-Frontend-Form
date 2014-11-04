@@ -15,9 +15,13 @@ add_action( 'admin_enqueue_scripts', function(){
 	wp_enqueue_script('jquery-ui-draggable');
 	wp_enqueue_script('jquery-ui-sortable');
 	wp_enqueue_script('jquery-ui-resizable');
+	/*
 	wp_register_script( 'wpfrontendform', WPFF_URL . '/assets/js/main.js', 'jquery' );
 	wp_enqueue_script( 'wpfrontendform' );
-	wp_localize_script( 'wpfrontendform', 'wpfrontendform', array('ajaxurl' => admin_url( 'admin-ajax.php' )) );
+	wp_localize_script( 'wpfrontendform', 'wpfrontendform', array('ajaxurl' => admin_url( 'admin-ajax.php' )) );*/
+
+	wp_enqueue_script('wpff', WPFF_URL . '/assets/js/menu.js', 'jquery' );
+	wp_localize_script('wpff', 'wpff', array('ajaxurl' => admin_url('admin-ajax.php')) );
 	
 	/**
 	 * Load Styles
@@ -35,15 +39,16 @@ add_action( 'add_meta_boxes', function(){
 	/**
 	 * Form Settings
 	 */
-	add_meta_box( 'formsettings', 'Form Settings', function(){
+	/*add_meta_box( 'formsettings', 'Form Settings', function(){
 		$builder = new Settings;
-	}, 'wpfrontendform', 'advanced', 'high');
+	}, 'wpfrontendform', 'advanced', 'high');*/
 
 	/**
 	 * Form Builder
 	 */
 	add_meta_box( 'formbuilder', 'Form Builder', function(){
 		$builder = new FormBuilder;
+		echo $builder->make();
 	}, 'wpfrontendform', 'advanced', 'high' );
 
 });
@@ -79,6 +84,16 @@ add_action( 'wp_ajax_wpff_load_field_types_page', function(){
 });
 add_action( 'wp_ajax_nopriv_wpff_load_field_types_page', function(){
 	return Ajax::loadFieldTypesPage();
+});
+
+/**
+ * Ajax for loading a page.
+ */
+add_action( 'wp_ajax_wpffLoadPage', function(){
+	return Ajax::loadPage();
+});
+add_action( 'wp_ajax_nopriv_wpffLoadPage', function(){
+	return Ajax::loadPage();
 });
 
 /**

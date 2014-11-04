@@ -250,7 +250,7 @@ li.wpff-list-item div > ul.tiles > li{
 }
 
 /* Handles */
-#formbuilder h3.hndle, #formsettings h3.hndle{
+/*#formbuilder h3.hndle, #formsettings h3.hndle{
 	background: #CC6928;
 	padding: 17px;
 	color: #FFF;
@@ -261,7 +261,7 @@ li.wpff-list-item div > ul.tiles > li{
 #formbuilder .handlediv, #formsettings .handlediv{
 	color:#FFF;
 	margin-top:9px;
-}
+}*/
 
 /* Inside Table */
 table td.wpff-padding-20{

@@ -8,6 +8,7 @@ require_once WPFF_DIR . 'core/lib/Colony/Colony.php';
 /**
  * Files needed reguardless
  */
+require_once WPFF_DIR . 'core/views/View.php';
 require_once WPFF_DIR . 'core/includes/functions.php';
 require_once WPFF_DIR . 'core/includes/post-types.php';
 

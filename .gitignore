@@ -3,3 +3,6 @@ package.json
 GruntFile.js
 /node_modules
 /.sass-cache
+/assets/.sass-cache
+/assets/sass
+/assets/config.rb

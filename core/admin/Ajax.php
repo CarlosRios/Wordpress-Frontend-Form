@@ -1,6 +1,8 @@
 <?php
 namespace WPFF\Admin;
 
+use WPFF\View;
+
 class Ajax {
 
 	/**
@@ -30,4 +32,14 @@ class Ajax {
 		die;	
 	}
 
+	/**
+	 * Loads a page
+	 */
+	public static function loadPage()
+	{
+		$page = htmlentities( $_POST['page'] );
+		$view = new View;
+		$view->get($page)->make();
+		die;
+	}
 }
