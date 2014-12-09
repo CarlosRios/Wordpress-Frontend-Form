@@ -1,58 +1,49 @@
 <?php
 
-/**
- * Include needed libraries
- */
-require_once WPFF_DIR . 'core/lib/Colony/Colony.php';
+// List of files that are always needed.
+$files = array(
+	'lib/Colony/Colony.php',
+	'app/View.php',
+	'app/Controller.php',
+	'controllers/BuilderController.php',
+	'controllers/SettingsController.php',
+	'controllers/FieldsController.php',
+	'includes/functions.php',
+	'includes/post-types.php'
+);
 
-/**
- * Files needed reguardless
- */
-require_once WPFF_DIR . 'core/views/View.php';
-require_once WPFF_DIR . 'core/includes/functions.php';
-require_once WPFF_DIR . 'core/includes/post-types.php';
-
-/**
- * Require admin files
- */
-if( is_admin() )
+if( is_admin() ) // Admin files.
 {
-	/**
-	 * Includes
-	 */
-	require_once WPFF_DIR . 'core/includes/admin/actions.php';
-	require_once WPFF_DIR . 'core/includes/admin/filters.php';
-
-	/**
-	 * Classes
-	 */
-	require_once WPFF_DIR . 'core/admin/Settings.php';
-	require_once WPFF_DIR . 'core/admin/FormBuilder.php';
-	require_once WPFF_DIR . 'core/admin/Field.php';
-	require_once WPFF_DIR . 'core/admin/FieldTypes.php';
-	require_once WPFF_DIR . 'core/admin/Input.php';
-	require_once WPFF_DIR . 'core/admin/Row.php';
-	require_once WPFF_DIR . 'core/admin/Ajax.php';
+	$paths = array(
+		'includes/admin/actions.php',
+		'includes/admin/filters.php',
+		'controllers/admin/Settings.php',
+		'controllers/admin/FormBuilder.php',
+		'controllers/admin/Field.php',
+		'controllers/admin/FieldTypes.php',
+		'controllers/admin/Input.php',
+		'controllers/admin/Row.php',
+		'controllers/admin/Ajax.php'
+	);
+}
+else // Frontend files.
+{
+	$paths = array(
+		'includes/frontend/actions.php',
+		'includes/frontend/filters.php',
+		'controllers/frontend/Form.php',
+		'controllers/frontend/Field.php',
+		'controllers/frontend/Message.php',
+		'controllers/frontend/Row.php',
+		'controllers/frontend/Validator.php',
+		'controllers/frontend/Notifications.php'
+	);
 }
 
-/**
- * Require frontend files
- */
-else
-{
-	/**
-	 * Includes
-	 */
-	require_once WPFF_DIR . 'core/includes/frontend/actions.php';
-	require_once WPFF_DIR . 'core/includes/frontend/filters.php';
+// Merge paths with files array.
+$files = array_merge( $files, $paths );
 
-	/**
-	 * Classes
-	 */
-	require_once WPFF_DIR . 'core/frontend/Form.php';
-	require_once WPFF_DIR . 'core/frontend/Field.php';
-	require_once WPFF_DIR . 'core/frontend/Message.php';
-	require_once WPFF_DIR . 'core/frontend/Row.php';
-	require_once WPFF_DIR . 'core/frontend/Validator.php';
-	require_once WPFF_DIR . 'core/frontend/Notifications.php';
+// Loop through files and require them.
+foreach( $files as $path ){
+	require_once WPFF_DIR . 'core/' . $path;
 }

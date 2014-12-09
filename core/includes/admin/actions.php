@@ -1,99 +1,61 @@
 <?php
-use WPFF\Admin\FormBuilder;
-use WPFF\Admin\Settings;
-use WPFF\Admin\Ajax;
+
+use WPFF\Controller;
 
 /**
  * Scripts & Styles
  */
-add_action( 'admin_enqueue_scripts', function(){
-
-	/**
-	 * Load Scripts
-	 */
+add_action( 'admin_enqueue_scripts', function()
+{
+	// Load Scripts
 	wp_enqueue_script('jquery-ui-droppable');
 	wp_enqueue_script('jquery-ui-draggable');
 	wp_enqueue_script('jquery-ui-sortable');
 	wp_enqueue_script('jquery-ui-resizable');
-	/*
-	wp_register_script( 'wpfrontendform', WPFF_URL . '/assets/js/main.js', 'jquery' );
-	wp_enqueue_script( 'wpfrontendform' );
-	wp_localize_script( 'wpfrontendform', 'wpfrontendform', array('ajaxurl' => admin_url( 'admin-ajax.php' )) );*/
-
-	wp_enqueue_script('wpff', WPFF_URL . '/assets/js/menu.js', 'jquery' );
-	wp_localize_script('wpff', 'wpff', array('ajaxurl' => admin_url('admin-ajax.php')) );
+	wp_enqueue_script('jquery-livequery', WPFF_URL . '/assets/js/jquery.livequery.min.js', 'jquery');
+	wp_enqueue_script('material', WPFF_URL . '/assets/js/menu.js', 'jquery' );
+	wp_localize_script('material', 'material', array('ajaxurl' => admin_url('admin-ajax.php')) );
 	
-	/**
-	 * Load Styles
-	 */
-	wp_enqueue_style( 'wpff-style-admin', WPFF_URL . '/assets/css/style.css' );
-	wp_enqueue_style('wpff-admin', WPFF_URL . '/assets/css/admin.css');
-
+	// Load Styles
+	wp_enqueue_style( 'roboto-font', 'http://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic,700,500' );
+	wp_enqueue_style( 'animate', WPFF_URL . '/assets/css/animate.min.css' );
+	wp_enqueue_style( 'material-grid', WPFF_URL . '/assets/css/grid.css' );
+	wp_enqueue_style('material-admin', WPFF_URL . '/assets/css/admin.css');
 });
 
 /**
- * Add metaboxes to display form and settings
+ * Add metabox to form builder
  */
-add_action( 'add_meta_boxes', function(){
-
-	/**
-	 * Form Settings
-	 */
-	/*add_meta_box( 'formsettings', 'Form Settings', function(){
-		$builder = new Settings;
-	}, 'wpfrontendform', 'advanced', 'high');*/
-
-	/**
-	 * Form Builder
-	 */
+add_action( 'add_meta_boxes', function()
+{
 	add_meta_box( 'formbuilder', 'Form Builder', function(){
-		$builder = new FormBuilder;
-		echo $builder->make();
-	}, 'wpfrontendform', 'advanced', 'high' );
-
+		Controller::get( 'BuilderController@index' );
+	}, 'wpfrontendform', 'advanced', 'default' );
 });
 
 /**
  * Save the data upon save post action
  */
-add_action( 'save_post', function( $postid ){
-	update_post_meta($postid, 'wpff_options', $_POST['wpff_options']);
-	update_post_meta($postid, 'wpff_fields', $_POST['wpff_fields']);
-	return;
-});
-
-/**
- * Ajax functions
- */
-add_action( 'wp_ajax_wpff_add_field', function(){
-	return Ajax::createNewField();
-});
-add_action( 'wp_ajax_nopriv_wpff_add_field', function(){
-	return Ajax::createNewField();
-});
-
-add_action( 'wp_ajax_wpff_add_row', function(){
-	return Ajax::createNewRow();
-});
-add_action( 'wp_ajax_nopriv_wpff_add_row', function(){
-	return Ajax::createNewRow();
-});
-
-add_action( 'wp_ajax_wpff_load_field_types_page', function(){
-	return Ajax::loadFieldTypesPage();
-});
-add_action( 'wp_ajax_nopriv_wpff_load_field_types_page', function(){
-	return Ajax::loadFieldTypesPage();
+add_action( 'save_post', function( $postid )
+{
+	$data = array(
+		'postId'	=> $postid,
+		'options'	=> $_POST['form_options'],
+		'fields'	=> $_POST['form_fields']
+	);
+	Controller::get( 'BuilderController@update', $data );
 });
 
 /**
  * Ajax for loading a page.
  */
-add_action( 'wp_ajax_wpffLoadPage', function(){
-	return Ajax::loadPage();
+add_action( 'wp_ajax_formLoadController', function(){
+	Controller::get( $_POST['controller'], $_POST['variables'] ? $_POST['variables'] : array() );
+	die;
 });
-add_action( 'wp_ajax_nopriv_wpffLoadPage', function(){
-	return Ajax::loadPage();
+add_action( 'wp_ajax_nopriv_formLoadController', function(){
+	Controller::get( $_POST['controller'], $_POST['variables'] ? $_POST['variables'] : array() );
+	die;
 });
 
 /**

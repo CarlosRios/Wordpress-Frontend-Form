@@ -6,3 +6,4 @@ GruntFile.js
 /assets/.sass-cache
 /assets/sass
 /assets/config.rb
+bower.json

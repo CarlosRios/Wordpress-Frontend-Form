@@ -14,7 +14,7 @@ Author URI: http://wpfrontendforms.lavabucket.co
 define( 'WPFF_DIR', dirname(__FILE__) . '/' );
 define( 'WPFF_URL', plugins_url('', __FILE__) );
 define( 'WPFF_CURRENT_PAGE', basename($_SERVER['PHP_SELF']) );
-define( 'WP_DEBUG', false );
+define( 'WP_DEBUG', true );
 
 /**
  * Require Autoload File
