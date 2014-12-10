@@ -15,15 +15,18 @@ class BuilderController{
 	private $menu = array(
 		'Settings'		=> array(
 			'controller'	=> 'SettingsController@index',
-			'icon'			=> 'dashicons-admin-generic'
+			'icon'			=> 'dashicons-admin-generic',
+			'id'			=> 'settingsPage'
 		),
 		'Add A New Row'	=> array(
 			'controller'	=> 'SettingsController@addRowForm',
-			'icon'			=> 'dashicons-plus'
+			'icon'			=> 'dashicons-plus',
+			'id'			=> 'addRowPage'
 		),
 		'Add Fields'	=> array(
 			'controller'	=> 'SettingsController@addFieldsForm',
-			'icon'			=> 'dashicons-plus'
+			'icon'			=> 'dashicons-plus',
+			'id'			=> 'addFieldsPage'
 		)
 	);
 

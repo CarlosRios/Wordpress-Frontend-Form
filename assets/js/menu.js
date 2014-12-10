@@ -8,7 +8,7 @@ jQuery(document).ready(function($)
 		menuicon = menu.find('#menu-icon'),
 		menubutton = menuicon.find('#btn-menu'),
 		backbutton = menuicon.find('#btn-back'),
-		pagetitle = menu.find('#wpff-page-title'),
+		pageTitle = menu.find('#wpff-page-title'),
 		list = $('#form-field-container'),
 		removeBtn = $('#btn-remove-row');
 
@@ -16,6 +16,10 @@ jQuery(document).ready(function($)
 	/** ==============================================
 	 * Fields
 	 ================================================= */
+	$(document).on('click', '.field-placeholder', function(){ // Add form to manage field
+		alert($(this).data('field-type') + ' has been clicked');
+	});
+
 	$('.field-item').livequery(function(){ // Make items draggable, implements Livequery plugin
 		$(this).draggable({ helper: 'clone' });
 	});
@@ -28,6 +32,19 @@ jQuery(document).ready(function($)
 			tolerance: 'pointer',
 			drop: function( event, ui ){
 				self.removeClass('dropzone-hover');
+				self.droppable( 'option', 'disabled', true );
+				$.ajax({
+					type : 'post',
+					url : material.ajaxurl,
+					data : {
+						action: 'formLoadController',
+						controller: 'FieldsController@create',
+						variables: { type: $(ui.draggable).data('type') }
+					},
+					success : function( html ){
+						self.append( html );
+					}
+				});
 			}
 		});
 	});
@@ -37,7 +54,7 @@ jQuery(document).ready(function($)
 	 * Rows
 	 ================================================= */
 	$('#wpff-mainarea #form-field-container').sortable({ // Make rows sortable
-		placeholder: 'field-placeholder',
+		placeholder: 'row-placeholder',
 		forcePlaceholderSize: true
 	});
 
@@ -80,10 +97,17 @@ jQuery(document).ready(function($)
 	 * Page Loading
 	 ================================================= */
 	$(document).on('click', '.wpff-page-trigger', function(){ // Load a new page
-		formLoadPage( $('#wpff-menu-page'), $(this).data('controller'));
-		changeMenuIcon('back');
-		pagetitle.addClass('active').html( '<span>' + $(this).text() + '</span>' );
+		changeMenuPage( $(this).attr('id'), $(this).data('controller'), $(this).text() ); // Store id as previous page
 	});
+
+	function changeMenuPage( previous, page, title )
+	{
+		$('#wpff-menu-wrapper').hide();
+		changeMenuIcon('back');
+		pageTitle.addClass('active').html('<span>' + title + '</span>');
+		formLoadPage( $('#wpff-menu-page'), page );
+		return;
+	}
 
 	/**
 	 * Function to load a new controller method
@@ -115,11 +139,15 @@ jQuery(document).ready(function($)
 	 * Menu
 	 ================================================= */
 	menuicon.on('click', function(){ // Handle menu icon
-		pagetitle.addClass('active').html( '<span>Main Menu</span>' ); // Change the title	
+		pageTitle.addClass('active').html( '<span>Main Menu</span>' ); // Change the title	
 		if( menubutton.hasClass('icon-show') ){ // Toggle menu is the main menu button is clicked.
 			toggleMenu();
 		}
 		changeMenuIcon('home'); // Change the icon
+
+		// Check if menu has data-prev != '/'
+		$('#wpff-menu-wrapper').show();
+		$('#wpff-menu-page').hide();
 	});
 
 	/**
