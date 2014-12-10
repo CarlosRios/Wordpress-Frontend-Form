@@ -1,6 +1,8 @@
 <?php
 namespace WPFF;
 
+use Colony\Form;
+
 class ViewInterface {
 
 	protected $view;
@@ -71,6 +73,7 @@ class ViewInterface {
 		{
 			ob_start(); // Start buffering
 			if( isset($this->data) ) extract($this->data);
+			$form = new Form; // Instantiate form
 			include_once $this->view;
 			$contents = ob_get_clean(); // End buffering & store file path
 		}

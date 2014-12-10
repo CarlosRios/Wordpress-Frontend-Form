@@ -8,14 +8,7 @@
 		<span id="wpff-page-title" class="animated active"><span>Main Menu</span></span>
 	</div>
 	<div id="wpff-sidebar">
-		<div id="wpff-menu-wrapper">
-		<?php foreach( $menu as $item => $atts ) : ?>
-			<div id="<?php echo $atts['id']; ?>" class="wpff-page-trigger form-ink" data-controller="<?php echo $atts['controller']; ?>"><span class="dashicons <?php echo $atts['icon']; ?>"></span><?php echo $item; ?></div>
-		<?php endforeach; ?>
-		</div>
-		<div id="wpff-menu-page">
-			
-		</div>
+		<?php echo $menu; ?>
 	</div>
 </nav>
 <div id="wpff-mainarea">

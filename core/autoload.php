@@ -6,7 +6,6 @@ $files = array(
 	'app/View.php',
 	'app/Controller.php',
 	'controllers/BuilderController.php',
-	'controllers/SettingsController.php',
 	'controllers/FieldsController.php',
 	'includes/functions.php',
 	'includes/post-types.php'

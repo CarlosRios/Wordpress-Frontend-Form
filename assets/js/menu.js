@@ -96,17 +96,34 @@ jQuery(document).ready(function($)
 	/** ==============================================
 	 * Page Loading
 	 ================================================= */
-	$(document).on('click', '.wpff-page-trigger', function(){ // Load a new page
-		changeMenuPage( $(this).attr('id'), $(this).data('controller'), $(this).text() ); // Store id as previous page
-	});
+	$(document).on('click', '.menu-page-trigger', function(){ // Load a new page
 
-	function changeMenuPage( previous, page, title )
-	{
+		// Submenu
+		if( isSubmenu( $(this) ) ){
+			var parent = $(this).parent().parent(); // traverse up 2 levels
+			$(this).parent().hide();
+			parent.find('.opened').removeClass('opened');
+		}
+
 		$('#wpff-menu-wrapper').hide();
 		changeMenuIcon('back');
-		pageTitle.addClass('active').html('<span>' + title + '</span>');
-		formLoadPage( $('#wpff-menu-page'), page );
-		return;
+		pageTitle.addClass('active').html('<span>'+ $(this).text() +'</span>');
+
+		$( $(this).data('page') ).addClass('opened'); // Show page
+	});
+
+	/**
+	 * Check if this is a submenu item.
+	 * @param  Dom Object $item
+	 * @return bool
+	 */
+	function isSubmenu( item )
+	{
+		if( item.hasClass('menu-subpage-trigger') ){
+			return true;
+		}else{
+			return false;
+		}
 	}
 
 	/**
@@ -145,9 +162,9 @@ jQuery(document).ready(function($)
 		}
 		changeMenuIcon('home'); // Change the icon
 
-		// Check if menu has data-prev != '/'
 		$('#wpff-menu-wrapper').show();
-		$('#wpff-menu-page').hide();
+		$('.menu-subpage-items').show();
+		$('.opened').removeClass('opened');
 	});
 
 	/**

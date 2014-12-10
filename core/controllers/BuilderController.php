@@ -11,25 +11,6 @@ class BuilderController{
 	// Set the rows
 	private $rows;
 
-	// Set the menu
-	private $menu = array(
-		'Settings'		=> array(
-			'controller'	=> 'SettingsController@index',
-			'icon'			=> 'dashicons-admin-generic',
-			'id'			=> 'settingsPage'
-		),
-		'Add A New Row'	=> array(
-			'controller'	=> 'SettingsController@addRowForm',
-			'icon'			=> 'dashicons-plus',
-			'id'			=> 'addRowPage'
-		),
-		'Add Fields'	=> array(
-			'controller'	=> 'SettingsController@addFieldsForm',
-			'icon'			=> 'dashicons-plus',
-			'id'			=> 'addFieldsPage'
-		)
-	);
-
 	/**
 	 * Set the id & rows
 	 */
@@ -37,7 +18,6 @@ class BuilderController{
 	{
 		$this->postId = get_the_ID();
 		$this->rows = get_post_meta($this->postId, 'form_fields', true);
-		$this->form = new Form;
 	}
 
 	/**
@@ -46,11 +26,7 @@ class BuilderController{
 	 */
 	public function makeRows( $rows )
 	{
-		$data = array(
-			'form'		=> new Form,
-			'rows'		=> $rows
-		);
-		return View::make('admin.builder.addRow')->with( $data );
+		return View::make('admin.builder.addRow')->with( 'rows', $rows );
 	}
 
 	/**
@@ -58,18 +34,19 @@ class BuilderController{
 	 */
 	public function index()
 	{
-		// Default rows for new items.
-		$defaultRows = array(
+		$defaultRows = array( // Default rows for new items.
 			'row_' . uniqid() => array(
 				array(
 					'id'	=> uniqid()
 				)
 			)
 		);
+
 		$rows = !empty($this->rows) ? $this->rows : $defaultRows;
+		
 		echo View::make('admin.builder.index')->with(array(
-			'menu' => $this->menu,
-			'rows' => $this->makeRows($rows)
+			'menu' => View::make('admin.builder.sidebarMenu'),
+			'rows' => $this->makeRows( $rows )
 		));
 	}
 
@@ -84,9 +61,11 @@ class BuilderController{
 				'id'	=> uniqid()
 			);
 		}
+
 		$row = array(
 			'row_' . uniqid() => $fields
 		);
+
 		echo $this->makeRows( $row );
 	}
 
